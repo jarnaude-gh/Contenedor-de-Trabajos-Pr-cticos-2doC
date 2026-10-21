@@ -1,0 +1,6 @@
+{
+  "summary": "Plan de implementación para la identificación y visualización destacada de Trabajos Finales (uno por alumno) en la plataforma de la Escuela Don Bosco. Incluye selector de casilla en creación/edición con regla de unicidad por alumno, pestañas segmentadas en la vidriera principal, insignia dorada y borde distintivo en las tarjetas, y sincronización persistente en Google Cloud Firestore.",
+  "updatedAt": "2026-10-13T21:58:30.689136127Z",
+  "requestFeedback": true,
+  "userFacing": true
+}

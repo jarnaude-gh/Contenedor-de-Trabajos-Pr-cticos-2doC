@@ -1,0 +1,6 @@
+{
+  "name": "Contenedor de Trabajos Prácticos – Don Bosco",
+  "description": "Catálogo y vidriera digital de proyectos y trabajos prácticos de Habilidades Digitales + IA 2026 de la Escuela de Formación Profesional Don Bosco.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,433 @@
+{
+  "users": [
+    {
+      "fecha_creacion": "2026-10-06T23:18:53.346Z",
+      "password_hash": "$2b$10$VUUL4zEn7dMxS5E9VpMzneIoOU9k7Y3dTlSnrS4lwRdEtuPvkAvBS",
+      "nombre": "Betina",
+      "rol": "ALUMNO",
+      "apellido": "González",
+      "id": "user-1791328733346-fc3e6e",
+      "nombre_usuario": "betina",
+      "email": "gonzalezbetina76@gmail.com"
+    },
+    {
+      "rol": "ALUMNO",
+      "apellido": "Medina Paz",
+      "nombre_usuario": "aguspaz",
+      "password_hash": "$2b$10$uR.Cr8k6fNnlFLIK.ZaaCeNc2YIYmUokELMUEbuO1P/ZEEXc9dgYO",
+      "nombre": "Agustina",
+      "id": "user-1791328743137-3af54b",
+      "fecha_creacion": "2026-10-06T23:19:03.137Z",
+      "email": "yamila.medinapaz@gmail.com"
+    },
+    {
+      "nombre_usuario": "fany",
+      "apellido": "Bolivar",
+      "reset_token_expires": 1791932854042,
+      "reset_token": "760e620f2f5f95311eb7a584fd5c6db26a750b7c",
+      "email": "bolivar.f.silvana@gmail.com",
+      "id": "user-1791328744740-2d0d01",
+      "fecha_creacion": "2026-10-06T23:19:04.740Z",
+      "rol": "ALUMNO",
+      "password_hash": "$2b$10$cmgSj60bzC/tyoeU9hjYIuwR8QJcENe3Lwzvm8Y9RYWQmeuIgBFEC",
+      "nombre": "Fany"
+    },
+    {
+      "apellido": "Blanco",
+      "email": "matilblanco2006@gmail.com",
+      "reset_token": "309dbcec357ce2adf8b066bd5adea3815b82eeab",
+      "rol": "ALUMNO",
+      "password_hash": "$2b$10$0huWMEXtFirrnfEEzDpb0..BY3gOYsYaCVaIwi4gFG/.FrV3AIUfu",
+      "reset_token_expires": 1791931594948,
+      "fecha_creacion": "2026-10-06T23:19:19.995Z",
+      "nombre_usuario": "matiwhitee",
+      "id": "user-1791328759995-ea08e2",
+      "nombre": "Matias"
+    },
+    {
+      "nombre": "laura veronica",
+      "nombre_usuario": "laura",
+      "apellido": "blanco",
+      "email": "lauraveronicablanco84@gmail.com",
+      "id": "user-1791328768665-a49816",
+      "rol": "ALUMNO",
+      "fecha_creacion": "2026-10-06T23:19:28.665Z",
+      "password_hash": "$2b$10$JE3c/fWPHWeHgR/sqnd6QOQVUVLY2vLNa36.Rb98cG7bYpIRogERq"
+    },
+    {
+      "email": "candela.200600@gmail.com",
+      "fecha_creacion": "2026-10-06T23:20:38.874Z",
+      "apellido": "R",
+      "id": "user-1791328838874-75705f",
+      "nombre": "Cande",
+      "password_hash": "$2b$10$As.2BJPdAqRmRHmpxP3WzOeF3J1DkIhge1b4jIaJWQfvey/Q7TTW6",
+      "rol": "ALUMNO",
+      "nombre_usuario": "yo0"
+    },
+    {
+      "nombre_usuario": "leila",
+      "password_hash": "$2b$10$pSnVaElPfV3o/ZUFAILG2.5HaTIqlsZdVixwHJ9kzClohNxxzGD1i",
+      "nombre": "leila",
+      "id": "user-1791926521991-098d98",
+      "email": "leilalisethcoronel@gmail.com",
+      "apellido": "coronel",
+      "rol": "ALUMNO",
+      "fecha_creacion": "2026-10-13T21:22:01.992Z"
+    },
+    {
+      "email": "aveazul550@gmail.com",
+      "fecha_creacion": "2026-10-13T21:46:20.101Z",
+      "id": "user-1791927980101-253319",
+      "rol": "ALUMNO",
+      "password_hash": "$2b$10$qfjKt6226F8z/gUPs1hzLuwZBahZxKQc05fKxq6tsik1zjFcM9vlS",
+      "nombre": "Mateo",
+      "nombre_usuario": "@valenprivitello",
+      "apellido": "Gimenez"
+    },
+    {
+      "nombre": "Fany",
+      "apellido": "Bolivar",
+      "fecha_creacion": "2026-10-13T22:12:19.939Z",
+      "email": "gerenciamonique@gmail.com",
+      "rol": "ALUMNO",
+      "nombre_usuario": "silvana",
+      "password_hash": "$2b$10$UXXAv99nie0eJwjwZXnKme2cdHkzOoNCITVXqtaiyXN4TRVN23gdm",
+      "id": "user-1791929539938-a93211"
+    },
+    {
+      "email": "profesor@donbosco.edu.ar",
+      "password_hash": "$2b$10$iA0O7HwzHUOXGCVcieohIen3zu9AvESxl49dp9LVTSZjBAqDfo0Y6",
+      "id": "user-admin-1",
+      "nombre_usuario": "profesor_donbosco",
+      "rol": "ADMINISTRADOR",
+      "nombre": "Profesor",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "apellido": "Don Bosco"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-1",
+      "nombre": "Educación",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "estado": "ACTIVA"
+    },
+    {
+      "nombre": "Servicios",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "estado": "ACTIVA",
+      "id": "cat-10"
+    },
+    {
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "estado": "ACTIVA",
+      "nombre": "General",
+      "id": "cat-11"
+    },
+    {
+      "estado": "ACTIVA",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "id": "cat-12",
+      "nombre": "Otros"
+    },
+    {
+      "nombre": "Redes Sociales",
+      "usuario_proponente_id": "user-1791328744740-2d0d01",
+      "fecha_creacion": "2026-10-06T23:32:06.131Z",
+      "id": "cat-1791329526131",
+      "estado": "ACTIVA",
+      "usuario_proponente_nombre": "Fany Bolivar"
+    },
+    {
+      "estado": "ACTIVA",
+      "usuario_proponente_nombre": "Fany Bolivar",
+      "usuario_proponente_id": "user-1791328744740-2d0d01",
+      "nombre": "Comunicación",
+      "id": "cat-1791330499457",
+      "fecha_creacion": "2026-10-06T23:48:19.457Z"
+    },
+    {
+      "usuario_proponente_nombre": "Agustina Medina Paz",
+      "nombre": "Arte y Cultura",
+      "usuario_proponente_id": "user-1791328743137-3af54b",
+      "estado": "ACTIVA",
+      "fecha_creacion": "2026-10-06T23:55:12.892Z",
+      "id": "cat-1791330912892"
+    },
+    {
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "nombre": "Salud",
+      "estado": "ACTIVA",
+      "id": "cat-2"
+    },
+    {
+      "id": "cat-3",
+      "estado": "ACTIVA",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "nombre": "Contable / Finanzas"
+    },
+    {
+      "id": "cat-4",
+      "nombre": "Entretenimiento",
+      "estado": "ACTIVA",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z"
+    },
+    {
+      "id": "cat-5",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "estado": "ACTIVA",
+      "nombre": "Productividad"
+    },
+    {
+      "estado": "ACTIVA",
+      "id": "cat-6",
+      "nombre": "Compras",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z"
+    },
+    {
+      "nombre": "Uso personal",
+      "estado": "ACTIVA",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "id": "cat-7"
+    },
+    {
+      "estado": "ACTIVA",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z",
+      "id": "cat-8",
+      "nombre": "Cosmética / Belleza"
+    },
+    {
+      "estado": "ACTIVA",
+      "id": "cat-9",
+      "nombre": "Organización",
+      "fecha_creacion": "2026-03-01T08:00:00.000Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "app-1791328824419-8b500a",
+      "enlace": "https://mi-negocio-2.ai.studio/",
+      "logo": "/uploads/logo-1791329917184-ec932317.png",
+      "nombre": "Mi negocio",
+      "herramienta": "Google AI Studio",
+      "descripcion": "Esta destinado a usarse para manejar el stock y las ventas",
+      "es_trabajo_final": true,
+      "categoria_id": "cat-3",
+      "fecha_ultima_modificacion": "2026-10-13T22:09:08.731Z",
+      "fecha_publicacion": "2026-10-06T23:20:24.419Z",
+      "autor_id": "user-1791328743137-3af54b"
+    },
+    {
+      "logo": "",
+      "enlace": "https://aistudio.google.com/apps/558303b3-1ed2-4bd0-a503-ff3e656aa5c8?showPreview=true&showAssistant=true&fullscreenApplet=true",
+      "nombre": "¿Qué cocino hoy?",
+      "herramienta": "Google AI Studio",
+      "id": "app-1791328978256-a3a2b0",
+      "fecha_publicacion": "2026-10-06T23:22:58.256Z",
+      "categoria_id": "cat-7",
+      "descripcion": "que puedo cocinar con los ingredientes que tengo",
+      "fecha_ultima_modificacion": "2026-10-07T01:54:39.402Z",
+      "autor_id": "user-1791328733346-fc3e6e"
+    },
+    {
+      "nombre": "que cocino hoy",
+      "enlace": "https://qu-cocino-hoy-2.ai.studio",
+      "fecha_ultima_modificacion": "2026-10-06T23:23:30.711Z",
+      "descripcion": "app para generar recetas de cocina",
+      "categoria_id": "cat-12",
+      "autor_id": "user-1791328768665-a49816",
+      "logo": "",
+      "herramienta": "Google AI Studio",
+      "id": "app-1791329010711-da560e",
+      "fecha_publicacion": "2026-10-06T23:23:30.711Z"
+    },
+    {
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVnQYK_JcupC72y662mSyWTPLMjS5hkx1FUMWmUSW43w&s=10",
+      "enlace": "https://quepuedococinarhoy.ai.studio",
+      "nombre": "Que puedo cocinar?",
+      "herramienta": "Google AI Studio",
+      "id": "app-1791329342272-e06e12",
+      "fecha_publicacion": "2026-10-06T23:29:02.272Z",
+      "categoria_id": "cat-5",
+      "descripcion": ".",
+      "fecha_ultima_modificacion": "2026-10-06T23:29:15.228Z",
+      "autor_id": "user-1791328759995-ea08e2"
+    },
+    {
+      "herramienta": "Google AI Studio",
+      "es_trabajo_final": true,
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIv0bEGpDzoowtgHSwlq_CwQM68iieVKv1XTunMHI9tg&s=10",
+      "enlace": "https://nuestras-apps.ai.studio",
+      "autor_id": "user-1791328759995-ea08e2",
+      "nombre": "Contenedor de apps",
+      "id": "app-1791329458655-cb55cc",
+      "categoria_id": "cat-9",
+      "fecha_ultima_modificacion": "2026-10-13T22:42:42.724Z",
+      "descripcion": ".",
+      "fecha_publicacion": "2026-10-06T23:30:58.655Z"
+    },
+    {
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_-wWmF73M2wiIhWXM_DSOS9j1vdVLRLV4qyN9sfoHw&s=10",
+      "enlace": "https://dulcedelimon.ai.studio",
+      "fecha_ultima_modificacion": "2026-10-13T22:42:32.654Z",
+      "id": "app-1791329530955-fb95a9",
+      "nombre": "Cotillon Dulce de Limon",
+      "categoria_id": "cat-12",
+      "herramienta": "Google AI Studio",
+      "autor_id": "user-1791328759995-ea08e2",
+      "descripcion": "App diseñada para la personalizacion de una torta",
+      "fecha_publicacion": "2026-10-06T23:32:10.955Z",
+      "es_trabajo_final": false
+    },
+    {
+      "fecha_ultima_modificacion": "2026-10-13T22:04:48.075Z",
+      "id": "app-1791926877631-83e229",
+      "fecha_publicacion": "2026-10-13T21:27:57.631Z",
+      "nombre": "marga",
+      "herramienta": "Google AI Studio",
+      "enlace": "https://example.com",
+      "es_trabajo_final": false,
+      "autor_id": "user-1791926521991-098d98",
+      "descripcion": "Proyecto de prueba",
+      "categoria_id": "cat-1",
+      "logo": ""
+    },
+    {
+      "fecha_publicacion": "2026-10-13T22:06:42.466Z",
+      "id": "app-1791929202466-33b588",
+      "autor_id": "user-1791328733346-fc3e6e",
+      "categoria_id": "cat-2",
+      "herramienta": "Google AI Studio",
+      "fecha_ultima_modificacion": "2026-10-19T22:27:25.653Z",
+      "nombre": "Kinetix AI",
+      "logo": "/uploads/logo-1792448813182-71035110.jpg",
+      "enlace": "https://kinetix-ai-entrenamiento-y-nutrici-n-adaptativa.ai.studio",
+      "es_trabajo_final": true,
+      "descripcion": "Plan de entrenamiento y nutrición adaptado a vos"
+    },
+    {
+      "autor_id": "user-1791929539938-a93211",
+      "descripcion": "Carga la lista de Precios desde un archivo Excel.",
+      "es_trabajo_final": false,
+      "categoria_id": "cat-3",
+      "logo": "",
+      "fecha_publicacion": "2026-10-13T22:15:30.971Z",
+      "enlace": "https://remix-gesti-n-lista-de-precios-2640.ai.studio",
+      "herramienta": "Google AI Studio",
+      "fecha_ultima_modificacion": "2026-10-20T22:44:37.117Z",
+      "nombre": "Lista de Precios",
+      "id": "app-1791929730971-fd2ed2",
+      "especificacion": null
+    }
+  ],
+  "ratings": [
+    {
+      "aplicacion_id": "app-1791328824419-8b500a",
+      "puntuacion": 5,
+      "id": "rate-1791328975780-8de10f",
+      "usuario_id": "user-1791328744740-2d0d01",
+      "fecha_calificacion": "2026-10-06T23:22:55.780Z",
+      "comentario": "",
+      "fecha_ultima_modificacion": "2026-10-06T23:22:55.780Z"
+    },
+    {
+      "comentario": "",
+      "fecha_ultima_modificacion": "2026-10-06T23:27:40.899Z",
+      "usuario_id": "user-1791328744740-2d0d01",
+      "id": "rate-1791329260899-04df54",
+      "aplicacion_id": "app-1791329010711-da560e",
+      "puntuacion": 5,
+      "fecha_calificacion": "2026-10-06T23:27:40.899Z"
+    },
+    {
+      "fecha_calificacion": "2026-10-06T23:31:05.874Z",
+      "usuario_id": "user-1791328744740-2d0d01",
+      "id": "rate-1791329465874-60e47c",
+      "comentario": "",
+      "aplicacion_id": "app-1791329342272-e06e12",
+      "fecha_ultima_modificacion": "2026-10-06T23:31:05.874Z",
+      "puntuacion": 5
+    },
+    {
+      "fecha_ultima_modificacion": "2026-10-06T23:31:36.076Z",
+      "comentario": "",
+      "usuario_id": "user-1791328744740-2d0d01",
+      "id": "rate-1791329496076-44aff4",
+      "puntuacion": 5,
+      "fecha_calificacion": "2026-10-06T23:31:36.076Z",
+      "aplicacion_id": "app-1791329458655-cb55cc"
+    },
+    {
+      "id": "rate-1791329647035-0fb28d",
+      "fecha_ultima_modificacion": "2026-10-06T23:34:07.035Z",
+      "usuario_id": "user-1791328744740-2d0d01",
+      "comentario": "",
+      "fecha_calificacion": "2026-10-06T23:34:07.035Z",
+      "aplicacion_id": "app-1791328978256-a3a2b0",
+      "puntuacion": 5
+    },
+    {
+      "fecha_ultima_modificacion": "2026-10-06T23:58:58.518Z",
+      "comentario": "",
+      "id": "rate-1791331138518-66221d",
+      "usuario_id": "user-1791328733346-fc3e6e",
+      "fecha_calificacion": "2026-10-06T23:58:58.518Z",
+      "puntuacion": 5,
+      "aplicacion_id": "app-1791329530955-fb95a9"
+    },
+    {
+      "puntuacion": 5,
+      "fecha_ultima_modificacion": "2026-10-06T23:59:12.061Z",
+      "id": "rate-1791331152061-d4dd61",
+      "comentario": "",
+      "aplicacion_id": "app-1791329010711-da560e",
+      "usuario_id": "user-1791328733346-fc3e6e",
+      "fecha_calificacion": "2026-10-06T23:59:12.061Z"
+    },
+    {
+      "puntuacion": 5,
+      "id": "rate-1791331192178-4c3165",
+      "aplicacion_id": "app-1791329530955-fb95a9",
+      "fecha_calificacion": "2026-10-06T23:59:52.178Z",
+      "comentario": "",
+      "fecha_ultima_modificacion": "2026-10-06T23:59:52.178Z",
+      "usuario_id": "user-1791328744740-2d0d01"
+    },
+    {
+      "usuario_id": "user-1791328733346-fc3e6e",
+      "fecha_ultima_modificacion": "2026-10-13T21:29:11.616Z",
+      "comentario": "",
+      "fecha_calificacion": "2026-10-13T21:29:11.616Z",
+      "aplicacion_id": "app-1791926877631-83e229",
+      "puntuacion": 5,
+      "id": "rate-1791926951616-8b2d5f"
+    },
+    {
+      "id": "rate-1791928207608-9b88c1",
+      "comentario": "",
+      "usuario_id": "user-admin-1",
+      "aplicacion_id": "app-1791926877631-83e229",
+      "puntuacion": 5,
+      "fecha_ultima_modificacion": "2026-10-13T21:50:07.608Z",
+      "fecha_calificacion": "2026-10-13T21:50:07.608Z"
+    },
+    {
+      "aplicacion_id": "app-1791329458655-cb55cc",
+      "puntuacion": 5,
+      "fecha_ultima_modificacion": "2026-10-13T21:50:16.512Z",
+      "fecha_calificacion": "2026-10-13T21:50:16.512Z",
+      "usuario_id": "user-admin-1",
+      "id": "rate-1791928216512-42dd99",
+      "comentario": ""
+    },
+    {
+      "id": "rate-1791995063511-407fe9",
+      "puntuacion": 5,
+      "fecha_ultima_modificacion": "2026-10-14T16:24:23.511Z",
+      "fecha_calificacion": "2026-10-14T16:24:23.511Z",
+      "aplicacion_id": "app-1791929730971-fd2ed2",
+      "usuario_id": "user-1791328733346-fc3e6e",
+      "comentario": ""
+    }
+  ]
+}

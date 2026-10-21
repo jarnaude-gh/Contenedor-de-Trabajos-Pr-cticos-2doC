@@ -1,0 +1,86 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Alumno o Profesor de la Escuela Don Bosco",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nombre": { "type": "string" },
+        "apellido": { "type": "string" },
+        "nombre_usuario": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "password_hash": { "type": "string" },
+        "rol": { "type": "string", "enum": ["ALUMNO", "ADMINISTRADOR"] },
+        "fecha_creacion": { "type": "string" }
+      },
+      "required": ["id", "nombre", "apellido", "nombre_usuario", "email", "rol", "fecha_creacion"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Categoría de trabajo práctico",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nombre": { "type": "string" },
+        "estado": { "type": "string", "enum": ["ACTIVA", "PENDIENTE"] },
+        "usuario_proponente_id": { "type": "string" },
+        "usuario_proponente_nombre": { "type": "string" },
+        "fecha_creacion": { "type": "string" }
+      },
+      "required": ["id", "nombre", "estado", "fecha_creacion"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "Trabajo práctico publicado",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nombre": { "type": "string" },
+        "logo": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "enlace": { "type": "string" },
+        "autor_id": { "type": "string" },
+        "categoria_id": { "type": "string" },
+        "herramienta": { "type": "string" },
+        "es_trabajo_final": { "type": "boolean" },
+        "fecha_publicacion": { "type": "string" },
+        "fecha_ultima_modificacion": { "type": "string" }
+      },
+      "required": ["id", "nombre", "descripcion", "enlace", "autor_id", "categoria_id", "herramienta", "fecha_publicacion"]
+    },
+    "Rating": {
+      "title": "Rating",
+      "description": "Calificación y comentario de un trabajo práctico",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "aplicacion_id": { "type": "string" },
+        "usuario_id": { "type": "string" },
+        "puntuacion": { "type": "number" },
+        "comentario": { "type": "string" },
+        "fecha_calificacion": { "type": "string" },
+        "fecha_ultima_modificacion": { "type": "string" }
+      },
+      "required": ["id", "aplicacion_id", "usuario_id", "puntuacion", "fecha_calificacion"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Usuarios registrados"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Categorías activas y pendientes"
+    },
+    "/applications/{applicationId}": {
+      "schema": "Application",
+      "description": "Trabajos prácticos publicados"
+    },
+    "/ratings/{ratingId}": {
+      "schema": "Rating",
+      "description": "Calificaciones de trabajos prácticos"
+    }
+  }
+}

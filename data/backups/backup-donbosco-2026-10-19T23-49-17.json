@@ -1,0 +1,445 @@
+{
+  "id": "backup-2026-10-19T23-49-17",
+  "filename": "backup-donbosco-2026-10-19T23-49-17.json",
+  "timestamp": "2026-10-19T23:49:17.706Z",
+  "creator": "Profesor Don Bosco",
+  "summary": {
+    "total_users": 10,
+    "total_applications": 9,
+    "total_categories": 15,
+    "total_ratings": 12,
+    "total_finales": 3
+  },
+  "data": {
+    "users": [
+      {
+        "nombre": "Betina",
+        "email": "gonzalezbetina76@gmail.com",
+        "apellido": "González",
+        "rol": "ALUMNO",
+        "fecha_creacion": "2026-10-06T23:18:53.346Z",
+        "password_hash": "$2b$10$VUUL4zEn7dMxS5E9VpMzneIoOU9k7Y3dTlSnrS4lwRdEtuPvkAvBS",
+        "nombre_usuario": "betina",
+        "id": "user-1791328733346-fc3e6e"
+      },
+      {
+        "fecha_creacion": "2026-10-06T23:19:03.137Z",
+        "rol": "ALUMNO",
+        "nombre": "Agustina",
+        "id": "user-1791328743137-3af54b",
+        "password_hash": "$2b$10$uR.Cr8k6fNnlFLIK.ZaaCeNc2YIYmUokELMUEbuO1P/ZEEXc9dgYO",
+        "apellido": "Medina Paz",
+        "nombre_usuario": "aguspaz",
+        "email": "yamila.medinapaz@gmail.com"
+      },
+      {
+        "nombre_usuario": "fany",
+        "password_hash": "$2b$10$cmgSj60bzC/tyoeU9hjYIuwR8QJcENe3Lwzvm8Y9RYWQmeuIgBFEC",
+        "id": "user-1791328744740-2d0d01",
+        "reset_token_expires": 1791932854042,
+        "reset_token": "760e620f2f5f95311eb7a584fd5c6db26a750b7c",
+        "email": "bolivar.f.silvana@gmail.com",
+        "rol": "ALUMNO",
+        "nombre": "Fany",
+        "fecha_creacion": "2026-10-06T23:19:04.740Z",
+        "apellido": "Bolivar"
+      },
+      {
+        "reset_token_expires": 1791931594948,
+        "reset_token": "309dbcec357ce2adf8b066bd5adea3815b82eeab",
+        "apellido": "Blanco",
+        "fecha_creacion": "2026-10-06T23:19:19.995Z",
+        "password_hash": "$2b$10$0huWMEXtFirrnfEEzDpb0..BY3gOYsYaCVaIwi4gFG/.FrV3AIUfu",
+        "nombre_usuario": "matiwhitee",
+        "id": "user-1791328759995-ea08e2",
+        "email": "matilblanco2006@gmail.com",
+        "nombre": "Matias",
+        "rol": "ALUMNO"
+      },
+      {
+        "email": "lauraveronicablanco84@gmail.com",
+        "password_hash": "$2b$10$JE3c/fWPHWeHgR/sqnd6QOQVUVLY2vLNa36.Rb98cG7bYpIRogERq",
+        "nombre_usuario": "laura",
+        "nombre": "laura veronica",
+        "fecha_creacion": "2026-10-06T23:19:28.665Z",
+        "apellido": "blanco",
+        "rol": "ALUMNO",
+        "id": "user-1791328768665-a49816"
+      },
+      {
+        "apellido": "R",
+        "id": "user-1791328838874-75705f",
+        "password_hash": "$2b$10$As.2BJPdAqRmRHmpxP3WzOeF3J1DkIhge1b4jIaJWQfvey/Q7TTW6",
+        "nombre": "Cande",
+        "fecha_creacion": "2026-10-06T23:20:38.874Z",
+        "email": "candela.200600@gmail.com",
+        "rol": "ALUMNO",
+        "nombre_usuario": "yo0"
+      },
+      {
+        "id": "user-1791926521991-098d98",
+        "rol": "ALUMNO",
+        "apellido": "coronel",
+        "password_hash": "$2b$10$pSnVaElPfV3o/ZUFAILG2.5HaTIqlsZdVixwHJ9kzClohNxxzGD1i",
+        "nombre_usuario": "leila",
+        "fecha_creacion": "2026-10-13T21:22:01.992Z",
+        "nombre": "leila",
+        "email": "leilalisethcoronel@gmail.com"
+      },
+      {
+        "apellido": "Gimenez",
+        "nombre": "Mateo",
+        "password_hash": "$2b$10$qfjKt6226F8z/gUPs1hzLuwZBahZxKQc05fKxq6tsik1zjFcM9vlS",
+        "fecha_creacion": "2026-10-13T21:46:20.101Z",
+        "nombre_usuario": "@valenprivitello",
+        "email": "aveazul550@gmail.com",
+        "rol": "ALUMNO",
+        "id": "user-1791927980101-253319"
+      },
+      {
+        "rol": "ALUMNO",
+        "nombre": "Fany",
+        "apellido": "Bolivar",
+        "fecha_creacion": "2026-10-13T22:12:19.939Z",
+        "password_hash": "$2b$10$UXXAv99nie0eJwjwZXnKme2cdHkzOoNCITVXqtaiyXN4TRVN23gdm",
+        "id": "user-1791929539938-a93211",
+        "email": "gerenciamonique@gmail.com",
+        "nombre_usuario": "silvana"
+      },
+      {
+        "apellido": "Don Bosco",
+        "nombre_usuario": "profesor_donbosco",
+        "email": "profesor@donbosco.edu.ar",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "id": "user-admin-1",
+        "password_hash": "$2b$10$iA0O7HwzHUOXGCVcieohIen3zu9AvESxl49dp9LVTSZjBAqDfo0Y6",
+        "nombre": "Profesor",
+        "rol": "ADMINISTRADOR"
+      }
+    ],
+    "categories": [
+      {
+        "nombre": "Educación",
+        "id": "cat-1",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "estado": "ACTIVA"
+      },
+      {
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "nombre": "Servicios",
+        "id": "cat-10",
+        "estado": "ACTIVA"
+      },
+      {
+        "nombre": "General",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "estado": "ACTIVA",
+        "id": "cat-11"
+      },
+      {
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "estado": "ACTIVA",
+        "nombre": "Otros",
+        "id": "cat-12"
+      },
+      {
+        "fecha_creacion": "2026-10-06T23:32:06.131Z",
+        "usuario_proponente_id": "user-1791328744740-2d0d01",
+        "nombre": "Redes Sociales",
+        "usuario_proponente_nombre": "Fany Bolivar",
+        "estado": "ACTIVA",
+        "id": "cat-1791329526131"
+      },
+      {
+        "estado": "ACTIVA",
+        "usuario_proponente_nombre": "Fany Bolivar",
+        "fecha_creacion": "2026-10-06T23:48:19.457Z",
+        "nombre": "Comunicación",
+        "usuario_proponente_id": "user-1791328744740-2d0d01",
+        "id": "cat-1791330499457"
+      },
+      {
+        "nombre": "Arte y Cultura",
+        "usuario_proponente_id": "user-1791328743137-3af54b",
+        "estado": "ACTIVA",
+        "id": "cat-1791330912892",
+        "fecha_creacion": "2026-10-06T23:55:12.892Z",
+        "usuario_proponente_nombre": "Agustina Medina Paz"
+      },
+      {
+        "nombre": "Salud",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "id": "cat-2",
+        "estado": "ACTIVA"
+      },
+      {
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "nombre": "Contable / Finanzas",
+        "id": "cat-3"
+      },
+      {
+        "nombre": "Entretenimiento",
+        "id": "cat-4",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "estado": "ACTIVA"
+      },
+      {
+        "nombre": "Productividad",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "id": "cat-5",
+        "estado": "ACTIVA"
+      },
+      {
+        "estado": "ACTIVA",
+        "id": "cat-6",
+        "nombre": "Compras",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z"
+      },
+      {
+        "id": "cat-7",
+        "nombre": "Uso personal",
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z"
+      },
+      {
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "id": "cat-8",
+        "nombre": "Cosmética / Belleza"
+      },
+      {
+        "id": "cat-9",
+        "estado": "ACTIVA",
+        "nombre": "Organización",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z"
+      }
+    ],
+    "applications": [
+      {
+        "enlace": "https://mi-negocio-2.ai.studio/",
+        "categoria_id": "cat-3",
+        "fecha_publicacion": "2026-10-06T23:20:24.419Z",
+        "logo": "/uploads/logo-1791329917184-ec932317.png",
+        "herramienta": "Google AI Studio",
+        "autor_id": "user-1791328743137-3af54b",
+        "nombre": "Mi negocio",
+        "es_trabajo_final": true,
+        "id": "app-1791328824419-8b500a",
+        "fecha_ultima_modificacion": "2026-10-13T22:09:08.731Z",
+        "descripcion": "Esta destinado a usarse para manejar el stock y las ventas"
+      },
+      {
+        "enlace": "https://aistudio.google.com/apps/558303b3-1ed2-4bd0-a503-ff3e656aa5c8?showPreview=true&showAssistant=true&fullscreenApplet=true",
+        "fecha_ultima_modificacion": "2026-10-07T01:54:39.402Z",
+        "id": "app-1791328978256-a3a2b0",
+        "categoria_id": "cat-7",
+        "logo": "",
+        "descripcion": "que puedo cocinar con los ingredientes que tengo",
+        "nombre": "¿Qué cocino hoy?",
+        "herramienta": "Google AI Studio",
+        "autor_id": "user-1791328733346-fc3e6e",
+        "fecha_publicacion": "2026-10-06T23:22:58.256Z"
+      },
+      {
+        "nombre": "que cocino hoy",
+        "fecha_publicacion": "2026-10-06T23:23:30.711Z",
+        "descripcion": "app para generar recetas de cocina",
+        "categoria_id": "cat-12",
+        "fecha_ultima_modificacion": "2026-10-06T23:23:30.711Z",
+        "logo": "",
+        "herramienta": "Google AI Studio",
+        "enlace": "https://qu-cocino-hoy-2.ai.studio",
+        "id": "app-1791329010711-da560e",
+        "autor_id": "user-1791328768665-a49816"
+      },
+      {
+        "descripcion": ".",
+        "id": "app-1791329342272-e06e12",
+        "nombre": "Que puedo cocinar?",
+        "autor_id": "user-1791328759995-ea08e2",
+        "enlace": "https://quepuedococinarhoy.ai.studio",
+        "herramienta": "Google AI Studio",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVnQYK_JcupC72y662mSyWTPLMjS5hkx1FUMWmUSW43w&s=10",
+        "fecha_ultima_modificacion": "2026-10-06T23:29:15.228Z",
+        "categoria_id": "cat-5",
+        "fecha_publicacion": "2026-10-06T23:29:02.272Z"
+      },
+      {
+        "enlace": "https://nuestras-apps.ai.studio",
+        "id": "app-1791329458655-cb55cc",
+        "herramienta": "Google AI Studio",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIv0bEGpDzoowtgHSwlq_CwQM68iieVKv1XTunMHI9tg&s=10",
+        "fecha_ultima_modificacion": "2026-10-13T22:42:42.724Z",
+        "fecha_publicacion": "2026-10-06T23:30:58.655Z",
+        "nombre": "Contenedor de apps",
+        "autor_id": "user-1791328759995-ea08e2",
+        "categoria_id": "cat-9",
+        "es_trabajo_final": true,
+        "descripcion": "."
+      },
+      {
+        "fecha_publicacion": "2026-10-06T23:32:10.955Z",
+        "id": "app-1791329530955-fb95a9",
+        "enlace": "https://dulcedelimon.ai.studio",
+        "descripcion": "App diseñada para la personalizacion de una torta",
+        "categoria_id": "cat-12",
+        "es_trabajo_final": false,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_-wWmF73M2wiIhWXM_DSOS9j1vdVLRLV4qyN9sfoHw&s=10",
+        "herramienta": "Google AI Studio",
+        "fecha_ultima_modificacion": "2026-10-13T22:42:32.654Z",
+        "nombre": "Cotillon Dulce de Limon",
+        "autor_id": "user-1791328759995-ea08e2"
+      },
+      {
+        "nombre": "marga",
+        "id": "app-1791926877631-83e229",
+        "fecha_ultima_modificacion": "2026-10-13T22:04:48.075Z",
+        "herramienta": "Google AI Studio",
+        "es_trabajo_final": false,
+        "logo": "",
+        "autor_id": "user-1791926521991-098d98",
+        "enlace": "https://example.com",
+        "categoria_id": "cat-1",
+        "fecha_publicacion": "2026-10-13T21:27:57.631Z",
+        "descripcion": "Proyecto de prueba"
+      },
+      {
+        "fecha_ultima_modificacion": "2026-10-19T22:27:25.653Z",
+        "categoria_id": "cat-2",
+        "enlace": "https://kinetix-ai-entrenamiento-y-nutrici-n-adaptativa.ai.studio",
+        "es_trabajo_final": true,
+        "herramienta": "Google AI Studio",
+        "autor_id": "user-1791328733346-fc3e6e",
+        "logo": "/uploads/logo-1792448813182-71035110.jpg",
+        "id": "app-1791929202466-33b588",
+        "nombre": "Kinetix AI",
+        "descripcion": "Plan de entrenamiento y nutrición adaptado a vos",
+        "fecha_publicacion": "2026-10-13T22:06:42.466Z"
+      },
+      {
+        "fecha_ultima_modificacion": "2026-10-13T22:15:30.971Z",
+        "categoria_id": "cat-3",
+        "fecha_publicacion": "2026-10-13T22:15:30.971Z",
+        "logo": "",
+        "descripcion": "Carga la lista de Precios desde un archivo Excel.",
+        "es_trabajo_final": false,
+        "enlace": "https://remix-gesti-n-lista-de-precios-2640.ai.studio",
+        "autor_id": "user-1791929539938-a93211",
+        "herramienta": "Google AI Studio",
+        "id": "app-1791929730971-fd2ed2",
+        "nombre": "Lista de Precios"
+      }
+    ],
+    "ratings": [
+      {
+        "puntuacion": 5,
+        "fecha_calificacion": "2026-10-06T23:22:55.780Z",
+        "fecha_ultima_modificacion": "2026-10-06T23:22:55.780Z",
+        "id": "rate-1791328975780-8de10f",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "aplicacion_id": "app-1791328824419-8b500a",
+        "comentario": ""
+      },
+      {
+        "id": "rate-1791329260899-04df54",
+        "puntuacion": 5,
+        "fecha_calificacion": "2026-10-06T23:27:40.899Z",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "fecha_ultima_modificacion": "2026-10-06T23:27:40.899Z",
+        "aplicacion_id": "app-1791329010711-da560e",
+        "comentario": ""
+      },
+      {
+        "id": "rate-1791329465874-60e47c",
+        "fecha_calificacion": "2026-10-06T23:31:05.874Z",
+        "fecha_ultima_modificacion": "2026-10-06T23:31:05.874Z",
+        "puntuacion": 5,
+        "comentario": "",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "aplicacion_id": "app-1791329342272-e06e12"
+      },
+      {
+        "comentario": "",
+        "id": "rate-1791329496076-44aff4",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "fecha_calificacion": "2026-10-06T23:31:36.076Z",
+        "aplicacion_id": "app-1791329458655-cb55cc",
+        "fecha_ultima_modificacion": "2026-10-06T23:31:36.076Z",
+        "puntuacion": 5
+      },
+      {
+        "aplicacion_id": "app-1791328978256-a3a2b0",
+        "puntuacion": 5,
+        "fecha_ultima_modificacion": "2026-10-06T23:34:07.035Z",
+        "fecha_calificacion": "2026-10-06T23:34:07.035Z",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "comentario": "",
+        "id": "rate-1791329647035-0fb28d"
+      },
+      {
+        "fecha_calificacion": "2026-10-06T23:58:58.518Z",
+        "comentario": "",
+        "usuario_id": "user-1791328733346-fc3e6e",
+        "id": "rate-1791331138518-66221d",
+        "fecha_ultima_modificacion": "2026-10-06T23:58:58.518Z",
+        "aplicacion_id": "app-1791329530955-fb95a9",
+        "puntuacion": 5
+      },
+      {
+        "puntuacion": 5,
+        "fecha_calificacion": "2026-10-06T23:59:12.061Z",
+        "id": "rate-1791331152061-d4dd61",
+        "comentario": "",
+        "usuario_id": "user-1791328733346-fc3e6e",
+        "fecha_ultima_modificacion": "2026-10-06T23:59:12.061Z",
+        "aplicacion_id": "app-1791329010711-da560e"
+      },
+      {
+        "puntuacion": 5,
+        "aplicacion_id": "app-1791329530955-fb95a9",
+        "fecha_calificacion": "2026-10-06T23:59:52.178Z",
+        "comentario": "",
+        "fecha_ultima_modificacion": "2026-10-06T23:59:52.178Z",
+        "id": "rate-1791331192178-4c3165",
+        "usuario_id": "user-1791328744740-2d0d01"
+      },
+      {
+        "aplicacion_id": "app-1791926877631-83e229",
+        "comentario": "",
+        "usuario_id": "user-1791328733346-fc3e6e",
+        "fecha_calificacion": "2026-10-13T21:29:11.616Z",
+        "fecha_ultima_modificacion": "2026-10-13T21:29:11.616Z",
+        "puntuacion": 5,
+        "id": "rate-1791926951616-8b2d5f"
+      },
+      {
+        "fecha_ultima_modificacion": "2026-10-13T21:50:07.608Z",
+        "puntuacion": 5,
+        "comentario": "",
+        "fecha_calificacion": "2026-10-13T21:50:07.608Z",
+        "aplicacion_id": "app-1791926877631-83e229",
+        "id": "rate-1791928207608-9b88c1",
+        "usuario_id": "user-admin-1"
+      },
+      {
+        "usuario_id": "user-admin-1",
+        "comentario": "",
+        "fecha_ultima_modificacion": "2026-10-13T21:50:16.512Z",
+        "id": "rate-1791928216512-42dd99",
+        "puntuacion": 5,
+        "aplicacion_id": "app-1791329458655-cb55cc",
+        "fecha_calificacion": "2026-10-13T21:50:16.512Z"
+      },
+      {
+        "aplicacion_id": "app-1791929730971-fd2ed2",
+        "usuario_id": "user-1791328733346-fc3e6e",
+        "comentario": "",
+        "fecha_calificacion": "2026-10-14T16:24:23.511Z",
+        "puntuacion": 5,
+        "id": "rate-1791995063511-407fe9",
+        "fecha_ultima_modificacion": "2026-10-14T16:24:23.511Z"
+      }
+    ]
+  }
+}
