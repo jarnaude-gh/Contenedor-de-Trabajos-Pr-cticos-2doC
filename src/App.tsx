@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { Application, Category } from './types';
+import { ThemeProvider } from './context/ThemeContext';
+import { Application, Category, VideoExplicativo } from './types';
 import { api } from './services/api';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -16,7 +17,8 @@ import { PublicProfileModal } from './components/PublicProfileModal';
 import { AuthModals } from './components/AuthModals';
 import { DeleteConfirmModal } from './components/DeleteConfirmModal';
 import { UploadSpecModal } from './components/UploadSpecModal';
-import { ChevronDown, Sparkles, Award } from 'lucide-react';
+import { IntroVideoModal } from './components/IntroVideoModal';
+import { ChevronDown, Sparkles, Award, Zap } from 'lucide-react';
 
 const PAGE_SIZE = 6;
 
@@ -25,7 +27,7 @@ function MainApp() {
 
   // Navigation
   const [currentView, setCurrentView] = useState<'home' | 'ranking' | 'my-apps' | 'admin'>('home');
-  const [vidrieraTab, setVidrieraTab] = useState<'todos' | 'finales'>('todos');
+  const [vidrieraTab, setVidrieraTab] = useState<'todos' | 'finales' | 'pipeline'>('todos');
 
   // Filters
   const [filters, setFilters] = useState<FilterState>({
@@ -56,6 +58,8 @@ function MainApp() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [myAppsRefreshKey, setMyAppsRefreshKey] = useState<number>(0);
   const [uploadSpecApp, setUploadSpecApp] = useState<Application | null>(null);
+  const [introVideo, setIntroVideo] = useState<VideoExplicativo | null>(null);
+  const [introVideoModalOpen, setIntroVideoModalOpen] = useState(false);
 
   // Helper to refresh both the main catalog and MyAppsView
   const refreshAllViews = () => {
@@ -63,12 +67,17 @@ function MainApp() {
     setMyAppsRefreshKey((prev) => prev + 1);
   };
 
-  // Load categories & tools on mount
+  // Load categories, tools & dashboard intro video on mount
   const loadInitialOptions = async () => {
     try {
-      const [cats, toolList] = await Promise.all([api.getCategories(false), api.getTools()]);
+      const [cats, toolList, introRes] = await Promise.all([
+        api.getCategories(false),
+        api.getTools(),
+        api.getIntroVideo().catch(() => ({ intro_video: null })),
+      ]);
       setCategories(cats);
       setTools(toolList);
+      setIntroVideo(introRes.intro_video || null);
     } catch (err) {
       console.error('Error fetching categories or tools:', err);
     }
@@ -90,6 +99,7 @@ function MainApp() {
         calificacion_minima: filters.calificacion_minima,
         fecha_desde: filters.fecha_desde,
         solo_finales: vidrieraTab === 'finales',
+        solo_pipeline: vidrieraTab === 'pipeline',
         limit: visibleLimit,
         offset: 0,
       });
@@ -164,7 +174,7 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col font-sans text-slate-900 dark:text-slate-100 selection:bg-blue-100 dark:selection:bg-blue-900 selection:text-blue-900 dark:selection:text-blue-100 transition-colors duration-200">
       {/* Top navigation */}
       <Navbar
         currentView={currentView}
@@ -184,11 +194,14 @@ function MainApp() {
               onOpenRanking={() => setCurrentView('ranking')}
               onOpenCreate={handleOpenCreate}
               isVisitor={isVisitor}
+              isAdmin={isAdmin}
+              introVideo={introVideo}
+              onManageIntroVideo={() => setIntroVideoModalOpen(true)}
             />
 
-            {/* Vidriera Tabs: Todos los Trabajos vs Trabajos Finales */}
+            {/* Vidriera Tabs: Todos los Trabajos vs Trabajos Finales vs Ejercitación Pipeline */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
-              <div className="inline-flex p-1 bg-slate-200/70 rounded-2xl border border-slate-200/80 shadow-2xs max-w-fit">
+              <div className="inline-flex p-1 bg-slate-200/70 dark:bg-slate-800/80 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xs max-w-fit flex-wrap">
                 <button
                   type="button"
                   onClick={() => {
@@ -197,14 +210,14 @@ function MainApp() {
                   }}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     vidrieraTab === 'todos'
-                      ? 'bg-white text-slate-900 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
+                      ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-slate-800/60'
                   }`}
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                   <span>Todos los Trabajos</span>
                   {vidrieraTab === 'todos' && (
-                    <span className="text-[10px] font-semibold bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded-full">
+                    <span className="text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-1.5 py-0.5 rounded-full">
                       {totalApps}
                     </span>
                   )}
@@ -219,7 +232,7 @@ function MainApp() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     vidrieraTab === 'finales'
                       ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-amber-950 shadow-xs font-black ring-1 ring-amber-400'
-                      : 'text-amber-800 hover:text-amber-950 hover:bg-amber-100/60'
+                      : 'text-amber-800 dark:text-amber-400 hover:text-amber-950 dark:hover:text-amber-300 hover:bg-amber-100/60 dark:hover:bg-amber-950/40'
                   }`}
                 >
                   <Award className="w-3.5 h-3.5 text-amber-950" />
@@ -230,12 +243,40 @@ function MainApp() {
                     </span>
                   )}
                 </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setVidrieraTab('pipeline');
+                    setVisibleLimit(PAGE_SIZE);
+                  }}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    vidrieraTab === 'pipeline'
+                      ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-xs font-black ring-1 ring-violet-400'
+                      : 'text-violet-700 dark:text-violet-400 hover:text-violet-950 dark:hover:text-violet-300 hover:bg-violet-100/60 dark:hover:bg-violet-950/40'
+                  }`}
+                >
+                  <Zap className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
+                  <span>⚡ AI Studio ➔ GitHub ➔ Vercel</span>
+                  {vidrieraTab === 'pipeline' && (
+                    <span className="text-[10px] font-black bg-white/25 text-white px-1.5 py-0.5 rounded-full">
+                      {totalApps}
+                    </span>
+                  )}
+                </button>
               </div>
 
               {vidrieraTab === 'finales' && (
-                <div className="text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-200/80 px-3.5 py-2 rounded-xl flex items-center gap-2 animate-fadeIn">
+                <div className="text-xs font-semibold text-amber-900 dark:text-amber-200 bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 px-3.5 py-2 rounded-xl flex items-center gap-2 animate-fadeIn">
                   <Award className="w-4 h-4 text-amber-600 shrink-0" />
                   <span>Exhibición de proyectos de graduación oficiales (1 por alumno)</span>
+                </div>
+              )}
+
+              {vidrieraTab === 'pipeline' && (
+                <div className="text-xs font-semibold text-violet-950 dark:text-violet-200 bg-violet-50 dark:bg-violet-950/40 border border-violet-200/80 dark:border-violet-800/60 px-3.5 py-2 rounded-xl flex items-center gap-2 animate-fadeIn">
+                  <Zap className="w-4 h-4 text-violet-600 fill-violet-600 shrink-0" />
+                  <span>Ejercitación específica: Ciclo Google AI Studio + GitHub + Vercel</span>
                 </div>
               )}
             </div>
@@ -253,15 +294,15 @@ function MainApp() {
             {loadingApps && apps.length === 0 ? (
               <div className="py-20 text-center">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent mb-3"></div>
-                <p className="text-xs text-slate-500 font-medium">Cargando aplicaciones...</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Cargando aplicaciones...</p>
               </div>
             ) : apps.length === 0 ? (
-              <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center space-y-3">
-                <Sparkles className="w-12 h-12 text-slate-300 mx-auto" />
-                <h3 className="text-base font-bold text-slate-800">
+              <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-12 text-center space-y-3">
+                <Sparkles className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto" />
+                <h3 className="text-base font-bold text-slate-800 dark:text-white">
                   No se encontraron aplicaciones con los filtros seleccionados
                 </h3>
-                <p className="text-xs text-slate-500 max-w-md mx-auto">
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
                   Prueba modificando la búsqueda, seleccionando otra categoría o limpiando los
                   filtros aplicados.
                 </p>
@@ -278,7 +319,7 @@ function MainApp() {
                         fecha_desde: 'todas',
                       })
                     }
-                    className="px-4 py-2 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-xl transition cursor-pointer"
+                    className="px-4 py-2 text-xs font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/80 rounded-xl transition cursor-pointer"
                   >
                     Limpiar todos los filtros
                   </button>
@@ -305,7 +346,7 @@ function MainApp() {
                       type="button"
                       onClick={handleLoadMore}
                       disabled={loadingApps}
-                      className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold text-blue-700 bg-white hover:bg-blue-50 border border-blue-200 rounded-2xl shadow-xs transition hover:shadow-md cursor-pointer disabled:opacity-50"
+                      className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold text-blue-700 dark:text-blue-400 bg-white dark:bg-slate-900 hover:bg-blue-50 dark:hover:bg-slate-800 border border-blue-200 dark:border-slate-700 rounded-2xl shadow-xs transition hover:shadow-md cursor-pointer disabled:opacity-50"
                     >
                       <span>
                         {loadingApps
@@ -356,15 +397,15 @@ function MainApp() {
       </main>
 
       {/* Institutional Footer */}
-      <footer className="bg-white border-t border-slate-200 py-8 mt-12 text-center text-xs text-slate-500">
+      <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 mt-12 text-center text-xs text-slate-500 dark:text-slate-400 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
-          <div className="font-bold text-slate-800">
+          <div className="font-bold text-slate-800 dark:text-slate-200">
             Escuela de Formación Profesional Don Bosco
           </div>
-          <p className="text-[11px] text-slate-500">
+          <p className="text-[11px] text-slate-500 dark:text-slate-400">
             Curso Habilidades Digitales + IA 2026 • Catálogo Institucional de Proyectos Vibe Coding
           </p>
-          <div className="text-[10px] text-slate-400 pt-2 border-t border-slate-100">
+          <div className="text-[10px] text-slate-400 dark:text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800">
             Google AI Studio • Lovable • Replit • Bolt • Base44
           </div>
         </div>
@@ -437,14 +478,24 @@ function MainApp() {
         }}
         onRequireLogin={() => setAuthModalMode('login')}
       />
+
+      {/* 8. Teacher Intro Video Modal */}
+      <IntroVideoModal
+        isOpen={introVideoModalOpen}
+        onClose={() => setIntroVideoModalOpen(false)}
+        currentVideo={introVideo}
+        onSaved={(video) => setIntroVideo(video)}
+      />
     </div>
   );
 }
 
 export default function App() {
   return (
-    <AuthProvider>
-      <MainApp />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <MainApp />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }

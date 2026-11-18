@@ -1,4 +1,4 @@
-import { Application, Category, User, AdminStats, SpecificationFile } from '../types';
+import { Application, Category, User, AdminStats, SpecificationFile, VideoExplicativo } from '../types';
 
 const TOKEN_KEY = 'donbosco_auth_token';
 
@@ -121,6 +121,7 @@ export const api = {
     calificacion_minima?: string;
     fecha_desde?: string;
     solo_finales?: boolean;
+    solo_pipeline?: boolean;
     limit?: number;
     offset?: number;
   }): Promise<{ total: number; apps: Application[] }> {
@@ -132,6 +133,7 @@ export const api = {
     if (params.calificacion_minima && params.calificacion_minima !== '0') query.set('calificacion_minima', params.calificacion_minima);
     if (params.fecha_desde && params.fecha_desde !== 'todas') query.set('fecha_desde', params.fecha_desde);
     if (params.solo_finales) query.set('solo_finales', 'true');
+    if (params.solo_pipeline) query.set('solo_pipeline', 'true');
     if (params.limit) query.set('limit', String(params.limit));
     if (params.offset) query.set('offset', String(params.offset));
 
@@ -150,7 +152,10 @@ export const api = {
     categoria_id: string;
     herramienta: string;
     es_trabajo_final?: boolean;
+    es_ejercitacion_pipeline?: boolean;
+    repositorio_github?: string;
     especificacion?: SpecificationFile | null;
+    video_explicativo?: VideoExplicativo | null;
   }): Promise<{ message: string; app: Application }> {
     return request<{ message: string; app: Application }>('/apps', {
       method: 'POST',
@@ -168,7 +173,10 @@ export const api = {
       categoria_id: string;
       herramienta: string;
       es_trabajo_final?: boolean;
+      es_ejercitacion_pipeline?: boolean;
+      repositorio_github?: string;
       especificacion?: SpecificationFile | null;
+      video_explicativo?: VideoExplicativo | null;
     }
   ): Promise<{ message: string; app: Application }> {
     return request<{ message: string; app: Application }>(`/apps/${id}`, {
@@ -347,5 +355,133 @@ export const api = {
       method: 'DELETE',
     });
   },
+
+  // Upload raw video file (for forms before submitting)
+  async uploadVideoFile(
+    file: File,
+    herramientaAvatar?: string
+  ): Promise<{ message: string; video: VideoExplicativo }> {
+    const token = getAuthToken();
+    const headers: Record<string, string> = {
+      'Content-Type': file.type || 'video/mp4',
+      'X-Filename': encodeURIComponent(file.name),
+    };
+    if (herramientaAvatar) {
+      headers['X-Avatar-Tool'] = encodeURIComponent(herramientaAvatar);
+    }
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const response = await fetch('/api/upload-video', {
+      method: 'POST',
+      headers,
+      body: file,
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data.error || 'Error al subir el video explicativo.');
+    }
+    return data;
+  },
+
+  // Attach uploaded video file directly to an application
+  async uploadAppVideoFile(
+    appId: string,
+    file: File,
+    herramientaAvatar?: string
+  ): Promise<{ message: string; app: Application }> {
+    const token = getAuthToken();
+    const headers: Record<string, string> = {
+      'Content-Type': file.type || 'video/mp4',
+      'X-Filename': encodeURIComponent(file.name),
+    };
+    if (herramientaAvatar) {
+      headers['X-Avatar-Tool'] = encodeURIComponent(herramientaAvatar);
+    }
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const response = await fetch(`/api/apps/${appId}/video`, {
+      method: 'POST',
+      headers,
+      body: file,
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data.error || 'Error al subir el video del trabajo.');
+    }
+    return data;
+  },
+
+  // Attach video URL directly to an application
+  async setAppVideoLink(
+    appId: string,
+    url: string,
+    herramientaAvatar?: string
+  ): Promise<{ message: string; app: Application }> {
+    return request<{ message: string; app: Application }>(`/apps/${appId}/video`, {
+      method: 'POST',
+      body: JSON.stringify({ url, herramienta_avatar: herramientaAvatar }),
+    });
+  },
+
+  // Remove video from an application
+  async removeAppVideo(appId: string): Promise<{ message: string; app: Application }> {
+    return request<{ message: string; app: Application }>(`/apps/${appId}/video`, {
+      method: 'DELETE',
+    });
+  },
+
+  // Platform Intro Video (Teacher Dashboard)
+  async getIntroVideo(): Promise<{ intro_video: VideoExplicativo | null }> {
+    return request<{ intro_video: VideoExplicativo | null }>('/settings/intro-video');
+  },
+
+  async setIntroVideoLink(payload: {
+    url: string;
+    titulo?: string;
+    descripcion?: string;
+    herramienta_avatar?: string;
+  }): Promise<{ message: string; intro_video: VideoExplicativo | null }> {
+    return request<{ message: string; intro_video: VideoExplicativo | null }>('/settings/intro-video', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  },
+
+  async uploadIntroVideoFile(
+    file: File,
+    meta?: { titulo?: string; descripcion?: string; herramienta_avatar?: string }
+  ): Promise<{ message: string; intro_video: VideoExplicativo | null }> {
+    const token = getAuthToken();
+    const headers: Record<string, string> = {
+      'Content-Type': file.type || 'video/mp4',
+      'X-Filename': encodeURIComponent(file.name),
+    };
+    if (meta?.titulo) headers['X-Video-Title'] = encodeURIComponent(meta.titulo);
+    if (meta?.descripcion) headers['X-Video-Desc'] = encodeURIComponent(meta.descripcion);
+    if (meta?.herramienta_avatar) headers['X-Avatar-Tool'] = encodeURIComponent(meta.herramienta_avatar);
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+    const response = await fetch('/api/settings/intro-video/upload', {
+      method: 'POST',
+      headers,
+      body: file,
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data.error || 'Error al subir el video explicativo del dashboard.');
+    }
+    return data;
+  },
+
+  async removeIntroVideo(): Promise<{ message: string; intro_video: null }> {
+    return request<{ message: string; intro_video: null }>('/settings/intro-video', {
+      method: 'DELETE',
+    });
+  },
 };
+
 

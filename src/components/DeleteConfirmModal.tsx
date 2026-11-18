@@ -20,27 +20,27 @@ export const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
       <div
-        className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4"
+        className="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
+        <div className="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950/70 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto">
           <Trash2 className="w-6 h-6" />
         </div>
 
         <div className="text-center">
-          <h4 className="text-lg font-black text-slate-900">¿Eliminar este trabajo práctico?</h4>
-          <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+          <h4 className="text-lg font-black text-slate-900 dark:text-white">¿Eliminar este trabajo práctico?</h4>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
             Estás a punto de eliminar <strong>"{app.nombre}"</strong>. Esta acción es definitiva: se
             eliminarán también todas sus calificaciones y comentarios asociados de la base de datos.
           </p>
         </div>
 
-        <div className="flex items-center justify-center gap-3 pt-3 border-t border-slate-100">
+        <div className="flex items-center justify-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
           <button
             type="button"
             onClick={onClose}
             disabled={isDeleting}
-            className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer"
+            className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition cursor-pointer"
           >
             Cancelar
           </button>

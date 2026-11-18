@@ -127,20 +127,20 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
       <div
-        className="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden flex flex-col"
+        className="relative bg-white dark:bg-slate-900 rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div className="px-6 py-4 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+            <div className="w-8 h-8 rounded-xl bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold">
               <FileText className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                 Instrucciones y Especificación del Trabajo
               </h3>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Almacenamiento en Firebase Storage
               </p>
             </div>
@@ -149,7 +149,7 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-xl transition cursor-pointer"
+            className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-xl transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -158,26 +158,26 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
         {/* Body */}
         <div className="p-6 space-y-5">
           {/* Work Summary Card */}
-          <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/90 flex items-center gap-3">
+          <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200/90 dark:border-slate-700 flex items-center gap-3">
             <AppLogo logo={app.logo} name={app.nombre} size="sm" />
             <div className="min-w-0 flex-1">
-              <h4 className="text-xs font-bold text-slate-900 truncate">{app.nombre}</h4>
-              <p className="text-[11px] text-slate-500 truncate">
-                Por: <span className="font-semibold text-slate-700">{app.autor_nombre} {app.autor_apellido}</span> • {app.herramienta}
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">{app.nombre}</h4>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                Por: <span className="font-semibold text-slate-700 dark:text-slate-300">{app.autor_nombre} {app.autor_apellido}</span> • {app.herramienta}
               </p>
             </div>
           </div>
 
           {/* Feedback messages */}
           {errorMessage && (
-            <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-800 flex items-center gap-2">
+            <div className="p-3.5 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 rounded-xl text-xs text-rose-800 dark:text-rose-200 flex items-center gap-2">
               <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
               <span>{errorMessage}</span>
             </div>
           )}
 
           {successMessage && (
-            <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2">
+            <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 rounded-xl text-xs text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>{successMessage}</span>
             </div>
@@ -185,12 +185,12 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
 
           {/* Permissions gate */}
           {isVisitor ? (
-            <div className="p-5 bg-amber-50/70 border border-amber-200 rounded-2xl text-center space-y-3">
-              <div className="w-10 h-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto">
+            <div className="p-5 bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-2xl text-center space-y-3">
+              <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 flex items-center justify-center mx-auto">
                 <Lock className="w-5 h-5" />
               </div>
-              <h4 className="text-xs font-bold text-amber-950">Se requiere inicio de sesión</h4>
-              <p className="text-[11px] text-amber-800/90 max-w-sm mx-auto leading-relaxed">
+              <h4 className="text-xs font-bold text-amber-950 dark:text-amber-200">Se requiere inicio de sesión</h4>
+              <p className="text-[11px] text-amber-800/90 dark:text-amber-300/80 max-w-sm mx-auto leading-relaxed">
                 Para subir o actualizar las especificaciones e instrucciones de este trabajo, debes iniciar sesión como el alumno autor o como profesor administrador.
               </p>
               <div className="pt-1">
@@ -207,12 +207,12 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
               </div>
             </div>
           ) : !canUpload ? (
-            <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-center space-y-2">
-              <div className="w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center mx-auto">
+            <div className="p-5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl text-center space-y-2">
+              <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center mx-auto">
                 <Lock className="w-5 h-5" />
               </div>
-              <h4 className="text-xs font-bold text-slate-800">Permisos restringidos</h4>
-              <p className="text-[11px] text-slate-600 max-w-sm mx-auto leading-relaxed">
+              <h4 className="text-xs font-bold text-slate-800 dark:text-white">Permisos restringidos</h4>
+              <p className="text-[11px] text-slate-600 dark:text-slate-300 max-w-sm mx-auto leading-relaxed">
                 Únicamente el autor de este proyecto ({app.autor_nombre} {app.autor_apellido}) o el docente administrador pueden adjuntar o modificar las instrucciones.
               </p>
             </div>
@@ -220,14 +220,14 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
             <form onSubmit={handleUploadSubmit} className="space-y-4">
               {/* Existing file view if present */}
               {app.especificacion && (
-                <div className="p-4 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-white rounded-2xl border border-blue-200 space-y-2">
+                <div className="p-4 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-white dark:from-blue-950/40 dark:via-slate-800/80 dark:to-slate-850 rounded-2xl border border-blue-200 dark:border-blue-900/60 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
                       Archivo adjunto actual
                     </span>
                     {app.especificacion.almacenamiento === 'firebase_storage' && (
-                      <span className="text-[10px] font-bold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-full border border-amber-300 flex items-center gap-1">
-                        <HardDrive className="w-2.5 h-2.5 text-amber-600" />
+                      <span className="text-[10px] font-bold text-amber-800 dark:text-amber-300 bg-amber-100/80 dark:bg-amber-950/70 px-2 py-0.5 rounded-full border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+                        <HardDrive className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
                         Firebase Storage
                       </span>
                     )}
@@ -239,10 +239,10 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
                         <FileText className="w-5 h-5" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-xs font-bold text-slate-900 truncate" title={app.especificacion.nombre_archivo}>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white truncate" title={app.especificacion.nombre_archivo}>
                           {app.especificacion.nombre_archivo}
                         </p>
-                        <p className="text-[10px] text-slate-500">
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400">
                           {(app.especificacion.tamano_bytes / 1024).toFixed(1)} KB • Subido el {new Date(app.especificacion.fecha_subida).toLocaleDateString('es-AR')}
                         </p>
                       </div>
@@ -254,7 +254,7 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         download={app.especificacion.nombre_archivo}
-                        className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-blue-700 bg-white border border-blue-200 hover:bg-blue-50 rounded-lg transition"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300 bg-white dark:bg-slate-800 border border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-slate-700 rounded-lg transition"
                         title="Descargar archivo"
                       >
                         <FileDown className="w-3.5 h-3.5" />
@@ -264,7 +264,7 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
                         type="button"
                         onClick={handleRemoveExisting}
                         disabled={isRemoving || isUploading}
-                        className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition cursor-pointer disabled:opacity-50"
+                        className="p-1.5 text-rose-500 dark:text-rose-400 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-950/50 rounded-lg transition cursor-pointer disabled:opacity-50"
                         title="Eliminar archivo adjunto"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -276,7 +276,7 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
 
               {/* Upload Dropzone */}
               <div className="space-y-2">
-                <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider">
+                <label className="block text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
                   {app.especificacion
                     ? 'Subir nuevo archivo (reemplazará al actual)'
                     : 'Seleccionar archivo de instrucciones y especificación'}
@@ -286,8 +286,8 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
                   onClick={() => fileInputRef.current?.click()}
                   className={`border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition ${
                     selectedFile
-                      ? 'border-blue-500 bg-blue-50/30'
-                      : 'border-slate-300 hover:border-blue-400 bg-slate-50 hover:bg-blue-50/20'
+                      ? 'border-blue-500 bg-blue-50/30 dark:bg-blue-950/30'
+                      : 'border-slate-300 dark:border-slate-700 hover:border-blue-400 bg-slate-50 dark:bg-slate-800/40 hover:bg-blue-50/20 dark:hover:bg-blue-950/20'
                   }`}
                 >
                   <input
@@ -303,10 +303,10 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
                       <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
                         <FileText className="w-6 h-6" />
                       </div>
-                      <div className="text-xs font-bold text-slate-900 break-all">
+                      <div className="text-xs font-bold text-slate-900 dark:text-white break-all">
                         {selectedFile.name}
                       </div>
-                      <p className="text-[11px] text-slate-500">
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
                         {(selectedFile.size / 1024).toFixed(1)} KB • Listo para subir
                       </p>
                       <button
@@ -315,20 +315,20 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
                           e.stopPropagation();
                           setSelectedFile(null);
                         }}
-                        className="text-[11px] font-semibold text-rose-600 hover:underline cursor-pointer pt-1"
+                        className="text-[11px] font-semibold text-rose-600 dark:text-rose-400 hover:underline cursor-pointer pt-1"
                       >
                         Cambiar archivo seleccionado
                       </button>
                     </div>
                   ) : (
                     <div className="flex flex-col items-center gap-2">
-                      <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 flex items-center justify-center">
                         <Upload className="w-6 h-6" />
                       </div>
-                      <div className="text-xs font-bold text-slate-800">
+                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200">
                         Haz clic o arrastra un archivo aquí
                       </div>
-                      <p className="text-[11px] text-slate-500 max-w-sm">
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 max-w-sm">
                         Admite documentos Word (.docx, .doc), PDF (.pdf), Texto plano (.txt, .md), .zip (máx. 25MB)
                       </p>
                     </div>
@@ -337,7 +337,7 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
               </div>
 
               {/* Explanatory note */}
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
                 💡 <strong>¿Qué debe contener este archivo?</strong> Los requerimientos técnicos, la consigna del trabajo práctico, o los prompts e instrucciones de Vibe Coding utilizados para generar el código de la aplicación.
               </div>
 
@@ -346,7 +346,7 @@ export const UploadSpecModal: React.FC<UploadSpecModalProps> = ({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer"
+                  className="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition cursor-pointer"
                 >
                   Cancelar
                 </button>

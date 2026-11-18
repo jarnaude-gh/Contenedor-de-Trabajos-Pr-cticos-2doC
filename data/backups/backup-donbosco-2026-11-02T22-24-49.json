@@ -1,0 +1,592 @@
+{
+  "id": "backup-2026-11-02T22-24-49",
+  "filename": "backup-donbosco-2026-11-02T22-24-49.json",
+  "timestamp": "2026-11-02T22:24:49.274Z",
+  "creator": "Profesor Don Bosco",
+  "summary": {
+    "total_users": 11,
+    "total_applications": 14,
+    "total_categories": 15,
+    "total_ratings": 13,
+    "total_finales": 3,
+    "total_pipeline": 1
+  },
+  "data": {
+    "users": [
+      {
+        "fecha_creacion": "2026-10-06T23:18:53.346Z",
+        "email": "gonzalezbetina76@gmail.com",
+        "apellido": "González",
+        "nombre": "Betina",
+        "nombre_usuario": "betina",
+        "password_hash": "$2b$10$VUUL4zEn7dMxS5E9VpMzneIoOU9k7Y3dTlSnrS4lwRdEtuPvkAvBS",
+        "id": "user-1791328733346-fc3e6e",
+        "rol": "ALUMNO"
+      },
+      {
+        "fecha_creacion": "2026-10-06T23:19:03.137Z",
+        "apellido": "Medina Paz",
+        "nombre_usuario": "aguspaz",
+        "password_hash": "$2b$10$uR.Cr8k6fNnlFLIK.ZaaCeNc2YIYmUokELMUEbuO1P/ZEEXc9dgYO",
+        "id": "user-1791328743137-3af54b",
+        "nombre": "Agustina",
+        "rol": "ALUMNO",
+        "email": "yamila.medinapaz@gmail.com"
+      },
+      {
+        "password_hash": "$2b$10$cmgSj60bzC/tyoeU9hjYIuwR8QJcENe3Lwzvm8Y9RYWQmeuIgBFEC",
+        "nombre_usuario": "fany",
+        "rol": "ALUMNO",
+        "id": "user-1791328744740-2d0d01",
+        "apellido": "Bolivar",
+        "fecha_creacion": "2026-10-06T23:19:04.740Z",
+        "reset_token": "7a7480bb8c106f90c52a49376e0f54ea659b5550",
+        "email": "bolivar.f.silvana@gmail.com",
+        "reset_token_expires": 1792542342408,
+        "nombre": "Fany"
+      },
+      {
+        "nombre_usuario": "matiwhitee",
+        "password_hash": "$2b$10$0huWMEXtFirrnfEEzDpb0..BY3gOYsYaCVaIwi4gFG/.FrV3AIUfu",
+        "nombre": "Matias",
+        "reset_token_expires": 1793056872449,
+        "apellido": "Blanco",
+        "email": "matilblanco2006@gmail.com",
+        "fecha_creacion": "2026-10-06T23:19:19.995Z",
+        "reset_token": "1876da7bafd8763fb77df48907ca339120df7dd4",
+        "id": "user-1791328759995-ea08e2",
+        "rol": "ALUMNO"
+      },
+      {
+        "apellido": "blanco",
+        "fecha_creacion": "2026-10-06T23:19:28.665Z",
+        "nombre": "laura veronica",
+        "email": "lauraveronicablanco84@gmail.com",
+        "rol": "ALUMNO",
+        "nombre_usuario": "laura",
+        "password_hash": "$2b$10$JE3c/fWPHWeHgR/sqnd6QOQVUVLY2vLNa36.Rb98cG7bYpIRogERq",
+        "id": "user-1791328768665-a49816"
+      },
+      {
+        "fecha_creacion": "2026-10-06T23:20:38.874Z",
+        "email": "candela.200600@gmail.com",
+        "rol": "ALUMNO",
+        "password_hash": "$2b$10$As.2BJPdAqRmRHmpxP3WzOeF3J1DkIhge1b4jIaJWQfvey/Q7TTW6",
+        "nombre_usuario": "yo0",
+        "nombre": "Cande",
+        "apellido": "R",
+        "id": "user-1791328838874-75705f"
+      },
+      {
+        "nombre_usuario": "leila",
+        "nombre": "leila",
+        "rol": "ALUMNO",
+        "password_hash": "$2b$10$pSnVaElPfV3o/ZUFAILG2.5HaTIqlsZdVixwHJ9kzClohNxxzGD1i",
+        "apellido": "coronel",
+        "email": "leilalisethcoronel@gmail.com",
+        "fecha_creacion": "2026-10-13T21:22:01.992Z",
+        "id": "user-1791926521991-098d98"
+      },
+      {
+        "nombre_usuario": "@valenprivitello",
+        "apellido": "Gimenez",
+        "email": "aveazul550@gmail.com",
+        "password_hash": "$2b$10$qfjKt6226F8z/gUPs1hzLuwZBahZxKQc05fKxq6tsik1zjFcM9vlS",
+        "fecha_creacion": "2026-10-13T21:46:20.101Z",
+        "nombre": "Mateo",
+        "id": "user-1791927980101-253319",
+        "rol": "ALUMNO"
+      },
+      {
+        "nombre": "Fany",
+        "email": "gerenciamonique@gmail.com",
+        "id": "user-1791929539938-a93211",
+        "nombre_usuario": "silvana",
+        "password_hash": "$2b$10$UXXAv99nie0eJwjwZXnKme2cdHkzOoNCITVXqtaiyXN4TRVN23gdm",
+        "rol": "ALUMNO",
+        "fecha_creacion": "2026-10-13T22:12:19.939Z",
+        "apellido": "Bolivar"
+      },
+      {
+        "nombre_usuario": "cande",
+        "rol": "ALUMNO",
+        "id": "user-1792539521609-30a35b",
+        "password_hash": "$2b$10$6lUx6Bk07zq1mQaECBlpceoFKC/QYltW9yR24KMFkX.motxne2VW2",
+        "apellido": "yo",
+        "fecha_creacion": "2026-10-20T23:38:41.609Z",
+        "email": "todojodita.1234@gmail.com",
+        "nombre": "Cande"
+      },
+      {
+        "rol": "ADMINISTRADOR",
+        "id": "user-admin-1",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "apellido": "Don Bosco",
+        "nombre": "Profesor",
+        "nombre_usuario": "profesor_donbosco",
+        "password_hash": "$2b$10$iA0O7HwzHUOXGCVcieohIen3zu9AvESxl49dp9LVTSZjBAqDfo0Y6",
+        "email": "profesor@donbosco.edu.ar"
+      }
+    ],
+    "categories": [
+      {
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "id": "cat-1",
+        "estado": "ACTIVA",
+        "nombre": "Educación"
+      },
+      {
+        "id": "cat-10",
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "nombre": "Servicios"
+      },
+      {
+        "nombre": "General",
+        "id": "cat-11",
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z"
+      },
+      {
+        "id": "cat-12",
+        "nombre": "Otros",
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z"
+      },
+      {
+        "estado": "ACTIVA",
+        "id": "cat-1791329526131",
+        "fecha_creacion": "2026-10-06T23:32:06.131Z",
+        "usuario_proponente_id": "user-1791328744740-2d0d01",
+        "usuario_proponente_nombre": "Fany Bolivar",
+        "nombre": "Redes Sociales"
+      },
+      {
+        "fecha_creacion": "2026-10-06T23:48:19.457Z",
+        "nombre": "Comunicación",
+        "id": "cat-1791330499457",
+        "estado": "ACTIVA",
+        "usuario_proponente_id": "user-1791328744740-2d0d01",
+        "usuario_proponente_nombre": "Fany Bolivar"
+      },
+      {
+        "estado": "ACTIVA",
+        "usuario_proponente_id": "user-1791328743137-3af54b",
+        "id": "cat-1791330912892",
+        "usuario_proponente_nombre": "Agustina Medina Paz",
+        "fecha_creacion": "2026-10-06T23:55:12.892Z",
+        "nombre": "Arte y Cultura"
+      },
+      {
+        "estado": "ACTIVA",
+        "id": "cat-2",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "nombre": "Salud"
+      },
+      {
+        "estado": "ACTIVA",
+        "id": "cat-3",
+        "nombre": "Contable / Finanzas",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z"
+      },
+      {
+        "id": "cat-4",
+        "nombre": "Entretenimiento",
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z"
+      },
+      {
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "estado": "ACTIVA",
+        "id": "cat-5",
+        "nombre": "Productividad"
+      },
+      {
+        "estado": "ACTIVA",
+        "id": "cat-6",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "nombre": "Compras"
+      },
+      {
+        "estado": "ACTIVA",
+        "id": "cat-7",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "nombre": "Uso personal"
+      },
+      {
+        "id": "cat-8",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "estado": "ACTIVA",
+        "nombre": "Cosmética / Belleza"
+      },
+      {
+        "nombre": "Organización",
+        "estado": "ACTIVA",
+        "fecha_creacion": "2026-03-01T08:00:00.000Z",
+        "id": "cat-9"
+      }
+    ],
+    "applications": [
+      {
+        "fecha_publicacion": "2026-10-06T23:20:24.419Z",
+        "autor_id": "user-1791328743137-3af54b",
+        "id": "app-1791328824419-8b500a",
+        "es_trabajo_final": true,
+        "enlace": "https://mi-negocio-2.ai.studio/",
+        "logo": "/uploads/logo-1791329917184-ec932317.png",
+        "especificacion": {
+          "nombre_archivo": "Prompt Mi negocio.pdf",
+          "url": "/uploads/specs/spec-1792538751632-a43cab53-Prompt_Mi_negocio.pdf",
+          "fecha_subida": "2026-10-20T23:25:51.815Z",
+          "tamano_bytes": 358905,
+          "tipo_mime": "application/pdf",
+          "almacenamiento": "local"
+        },
+        "fecha_ultima_modificacion": "2026-10-20T23:25:51.815Z",
+        "categoria_id": "cat-3",
+        "nombre": "Mi negocio",
+        "herramienta": "Google AI Studio",
+        "descripcion": "Esta destinado a usarse para manejar el stock y las ventas"
+      },
+      {
+        "fecha_publicacion": "2026-10-06T23:22:58.256Z",
+        "autor_id": "user-1791328733346-fc3e6e",
+        "enlace": "https://aistudio.google.com/apps/558303b3-1ed2-4bd0-a503-ff3e656aa5c8?showPreview=true&showAssistant=true&fullscreenApplet=true",
+        "id": "app-1791328978256-a3a2b0",
+        "logo": "",
+        "fecha_ultima_modificacion": "2026-10-07T01:54:39.402Z",
+        "nombre": "¿Qué cocino hoy?",
+        "categoria_id": "cat-7",
+        "herramienta": "Google AI Studio",
+        "descripcion": "que puedo cocinar con los ingredientes que tengo"
+      },
+      {
+        "categoria_id": "cat-12",
+        "enlace": "https://qu-cocino-hoy-2.ai.studio",
+        "fecha_ultima_modificacion": "2026-10-06T23:23:30.711Z",
+        "id": "app-1791329010711-da560e",
+        "autor_id": "user-1791328768665-a49816",
+        "fecha_publicacion": "2026-10-06T23:23:30.711Z",
+        "nombre": "que cocino hoy",
+        "herramienta": "Google AI Studio",
+        "logo": "",
+        "descripcion": "app para generar recetas de cocina"
+      },
+      {
+        "especificacion": {
+          "fecha_subida": "2026-10-20T23:41:03.913Z",
+          "tipo_mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "almacenamiento": "local",
+          "nombre_archivo": "1.docx",
+          "url": "/uploads/specs/spec-1792539663741-9b135603-1.docx",
+          "tamano_bytes": 15771
+        },
+        "herramienta": "Google AI Studio",
+        "fecha_publicacion": "2026-10-06T23:29:02.272Z",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVnQYK_JcupC72y662mSyWTPLMjS5hkx1FUMWmUSW43w&s=10",
+        "descripcion": ".",
+        "fecha_ultima_modificacion": "2026-10-20T23:41:03.913Z",
+        "enlace": "https://quepuedococinarhoy.ai.studio",
+        "id": "app-1791329342272-e06e12",
+        "categoria_id": "cat-5",
+        "nombre": "Que puedo cocinar?",
+        "autor_id": "user-1791328759995-ea08e2"
+      },
+      {
+        "id": "app-1791329458655-cb55cc",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIv0bEGpDzoowtgHSwlq_CwQM68iieVKv1XTunMHI9tg&s=10",
+        "categoria_id": "cat-9",
+        "nombre": "Contenedor de apps",
+        "es_trabajo_final": true,
+        "autor_id": "user-1791328759995-ea08e2",
+        "fecha_ultima_modificacion": "2026-10-13T22:42:42.724Z",
+        "fecha_publicacion": "2026-10-06T23:30:58.655Z",
+        "enlace": "https://nuestras-apps.ai.studio",
+        "descripcion": ".",
+        "herramienta": "Google AI Studio"
+      },
+      {
+        "enlace": "https://dulcedelimon.ai.studio",
+        "fecha_publicacion": "2026-10-06T23:32:10.955Z",
+        "es_trabajo_final": false,
+        "id": "app-1791329530955-fb95a9",
+        "descripcion": "App diseñada para la personalizacion de una torta",
+        "fecha_ultima_modificacion": "2026-10-20T23:39:49.784Z",
+        "nombre": "Cotillon Dulce de Limon",
+        "herramienta": "Google AI Studio",
+        "autor_id": "user-1791328759995-ea08e2",
+        "categoria_id": "cat-12",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_-wWmF73M2wiIhWXM_DSOS9j1vdVLRLV4qyN9sfoHw&s=10",
+        "especificacion": {
+          "url": "/uploads/specs/spec-1792539589597-55ec0cab-PROYECTO.docx",
+          "nombre_archivo": "PROYECTO.docx",
+          "tamano_bytes": 28151,
+          "tipo_mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "almacenamiento": "local",
+          "fecha_subida": "2026-10-20T23:39:49.784Z"
+        }
+      },
+      {
+        "es_trabajo_final": true,
+        "logo": "/uploads/logo-1792448813182-71035110.jpg",
+        "especificacion": {
+          "almacenamiento": "local",
+          "tamano_bytes": 12745,
+          "fecha_subida": "2026-10-20T23:22:17.829Z",
+          "tipo_mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "nombre_archivo": "Prompt App Google IA Studio.docx",
+          "url": "/uploads/specs/spec-1792538537619-909dcda0-Prompt_App_Google_IA_Studio.docx"
+        },
+        "descripcion": "Plan de entrenamiento y nutrición adaptado a vos",
+        "categoria_id": "cat-2",
+        "id": "app-1791929202466-33b588",
+        "enlace": "https://kinetix-ai-entrenamiento-y-nutrici-n-adaptativa.ai.studio",
+        "herramienta": "Google AI Studio",
+        "fecha_ultima_modificacion": "2026-10-20T23:22:17.829Z",
+        "fecha_publicacion": "2026-10-13T22:06:42.466Z",
+        "nombre": "Kinetix AI",
+        "autor_id": "user-1791328733346-fc3e6e"
+      },
+      {
+        "es_trabajo_final": false,
+        "categoria_id": "cat-3",
+        "nombre": "Lista de Precios",
+        "id": "app-1791929730971-fd2ed2",
+        "especificacion": {
+          "almacenamiento": "local",
+          "url": "/uploads/specs/spec-1792540243140-ad8246c9-MONIQUE.docx",
+          "fecha_subida": "2026-10-20T23:50:43.320Z",
+          "tipo_mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "nombre_archivo": "MONIQUE.docx",
+          "tamano_bytes": 15591
+        },
+        "autor_id": "user-1791929539938-a93211",
+        "logo": "",
+        "enlace": "https://remix-gesti-n-lista-de-precios-2640.ai.studio",
+        "herramienta": "Google AI Studio",
+        "fecha_ultima_modificacion": "2026-10-20T23:50:43.320Z",
+        "fecha_publicacion": "2026-10-13T22:15:30.971Z",
+        "descripcion": "Carga la lista de Precios desde un archivo Excel."
+      },
+      {
+        "logo": "",
+        "fecha_publicacion": "2026-10-20T23:27:19.460Z",
+        "especificacion": {
+          "tamano_bytes": 34666,
+          "url": "/uploads/specs/spec-1792538801650-c1317297-Prompt_General_MARGA.pdf",
+          "nombre_archivo": "Prompt_General_MARGA.pdf",
+          "almacenamiento": "local",
+          "fecha_subida": "2026-10-20T23:26:41.797Z",
+          "tipo_mime": "application/pdf"
+        },
+        "descripcion": "gestion para un local gastronomico",
+        "enlace": "https://marga-caja.ai.studio",
+        "herramienta": "Google AI Studio",
+        "autor_id": "user-1791926521991-098d98",
+        "fecha_ultima_modificacion": "2026-10-20T23:27:19.460Z",
+        "id": "app-1792538839460-f73865",
+        "categoria_id": "cat-9",
+        "nombre": "marga",
+        "es_trabajo_final": false
+      },
+      {
+        "herramienta": "Bolt",
+        "nombre": "MARGA",
+        "id": "app-1792538941295-37927d",
+        "descripcion": "gestion para un local gastronomico",
+        "fecha_publicacion": "2026-10-20T23:29:01.295Z",
+        "categoria_id": "cat-9",
+        "es_trabajo_final": false,
+        "autor_id": "user-1791926521991-098d98",
+        "enlace": "https://marga-management-app-j8dq.bolt.host",
+        "fecha_ultima_modificacion": "2026-10-20T23:29:01.295Z",
+        "especificacion": null,
+        "logo": ""
+      },
+      {
+        "categoria_id": "cat-4",
+        "herramienta": "Google AI Studio",
+        "especificacion": {
+          "url": "/uploads/specs/spec-1792540479746-7ac772e5-Instrucciones_de_la_app_de_modificacion_de_vehiculos_de_gta_vice_city.doc",
+          "nombre_archivo": "Instrucciones de la app de modificacion de vehiculos de gta vice city.doc",
+          "fecha_subida": "2026-10-20T23:54:39.940Z",
+          "almacenamiento": "local",
+          "tamano_bytes": 55296,
+          "tipo_mime": "application/msword"
+        },
+        "descripcion": "Herramienta que se basa en modificar los archivos de los vehiculos (parametros, valores, etc) del GTA Vice City.",
+        "es_trabajo_final": false,
+        "fecha_publicacion": "2026-10-20T23:36:47.833Z",
+        "logo": "/uploads/logo-1792539861165-2628ac54.webp",
+        "id": "app-1792539407833-4c9432",
+        "nombre": "Vehicle Modding",
+        "fecha_ultima_modificacion": "2026-10-20T23:54:39.940Z",
+        "autor_id": "user-1791927980101-253319",
+        "enlace": "https://gta-vice-city-modding-suite.ai.studio"
+      },
+      {
+        "logo": "",
+        "categoria_id": "cat-1",
+        "id": "app-1792539959265-6586d2",
+        "enlace": "https://tito-y-las-tablas.ai.studio",
+        "es_trabajo_final": false,
+        "especificacion": null,
+        "fecha_publicacion": "2026-10-20T23:45:59.265Z",
+        "fecha_ultima_modificacion": "2026-10-20T23:45:59.265Z",
+        "herramienta": "Google AI Studio",
+        "nombre": "TiTo y las tablas",
+        "descripcion": "Juego educativo de matematicas.",
+        "autor_id": "user-1792539521609-30a35b"
+      },
+      {
+        "herramienta": "Otra",
+        "especificacion": null,
+        "autor_id": "user-1791328733346-fc3e6e",
+        "descripcion": "Aprende Excel de nivel inicial a avanzado",
+        "enlace": "https://exceledu-interactive-tstd.bolt.host",
+        "categoria_id": "cat-1",
+        "logo": "",
+        "nombre": "Exceledu",
+        "id": "app-1793397523809-e7b3ca",
+        "es_trabajo_final": false,
+        "fecha_ultima_modificacion": "2026-10-30T21:58:43.809Z",
+        "fecha_publicacion": "2026-10-30T21:58:43.809Z"
+      },
+      {
+        "id": "app-1793658272168-35d881",
+        "nombre": "Simulador de Órbitas Planetarias",
+        "logo": "",
+        "descripcion": "Aplicación interactiva desarrollada en la ejercitación práctica de integración continua entre Google AI Studio, GitHub y Vercel.",
+        "enlace": "https://orbitas-donbosco.vercel.app",
+        "autor_id": "user-admin-1",
+        "categoria_id": "cat-1",
+        "herramienta": "Google AI Studio",
+        "es_trabajo_final": false,
+        "es_ejercitacion_pipeline": true,
+        "repositorio_github": "https://github.com/donbosco-alumnos/simulador-orbitas",
+        "especificacion": null,
+        "fecha_publicacion": "2026-11-02T22:24:32.168Z",
+        "fecha_ultima_modificacion": "2026-11-02T22:24:32.168Z"
+      }
+    ],
+    "ratings": [
+      {
+        "id": "rate-1791328975780-8de10f",
+        "aplicacion_id": "app-1791328824419-8b500a",
+        "fecha_calificacion": "2026-10-06T23:22:55.780Z",
+        "puntuacion": 5,
+        "usuario_id": "user-1791328744740-2d0d01",
+        "fecha_ultima_modificacion": "2026-10-06T23:22:55.780Z",
+        "comentario": ""
+      },
+      {
+        "puntuacion": 5,
+        "id": "rate-1791329260899-04df54",
+        "fecha_calificacion": "2026-10-06T23:27:40.899Z",
+        "aplicacion_id": "app-1791329010711-da560e",
+        "fecha_ultima_modificacion": "2026-10-06T23:27:40.899Z",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "comentario": ""
+      },
+      {
+        "usuario_id": "user-1791328744740-2d0d01",
+        "comentario": "",
+        "fecha_calificacion": "2026-10-06T23:31:05.874Z",
+        "puntuacion": 5,
+        "id": "rate-1791329465874-60e47c",
+        "aplicacion_id": "app-1791329342272-e06e12",
+        "fecha_ultima_modificacion": "2026-10-06T23:31:05.874Z"
+      },
+      {
+        "fecha_ultima_modificacion": "2026-10-06T23:31:36.076Z",
+        "puntuacion": 5,
+        "id": "rate-1791329496076-44aff4",
+        "comentario": "",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "aplicacion_id": "app-1791329458655-cb55cc",
+        "fecha_calificacion": "2026-10-06T23:31:36.076Z"
+      },
+      {
+        "fecha_calificacion": "2026-10-06T23:34:07.035Z",
+        "id": "rate-1791329647035-0fb28d",
+        "fecha_ultima_modificacion": "2026-10-06T23:34:07.035Z",
+        "puntuacion": 5,
+        "aplicacion_id": "app-1791328978256-a3a2b0",
+        "comentario": "",
+        "usuario_id": "user-1791328744740-2d0d01"
+      },
+      {
+        "puntuacion": 5,
+        "aplicacion_id": "app-1791329530955-fb95a9",
+        "id": "rate-1791331138518-66221d",
+        "fecha_ultima_modificacion": "2026-10-06T23:58:58.518Z",
+        "usuario_id": "user-1791328733346-fc3e6e",
+        "fecha_calificacion": "2026-10-06T23:58:58.518Z",
+        "comentario": ""
+      },
+      {
+        "id": "rate-1791331152061-d4dd61",
+        "comentario": "",
+        "usuario_id": "user-1791328733346-fc3e6e",
+        "fecha_calificacion": "2026-10-06T23:59:12.061Z",
+        "puntuacion": 5,
+        "fecha_ultima_modificacion": "2026-10-06T23:59:12.061Z",
+        "aplicacion_id": "app-1791329010711-da560e"
+      },
+      {
+        "fecha_calificacion": "2026-10-06T23:59:52.178Z",
+        "aplicacion_id": "app-1791329530955-fb95a9",
+        "puntuacion": 5,
+        "fecha_ultima_modificacion": "2026-10-06T23:59:52.178Z",
+        "id": "rate-1791331192178-4c3165",
+        "usuario_id": "user-1791328744740-2d0d01",
+        "comentario": ""
+      },
+      {
+        "fecha_ultima_modificacion": "2026-10-13T21:50:16.512Z",
+        "fecha_calificacion": "2026-10-13T21:50:16.512Z",
+        "puntuacion": 5,
+        "comentario": "",
+        "usuario_id": "user-admin-1",
+        "aplicacion_id": "app-1791329458655-cb55cc",
+        "id": "rate-1791928216512-42dd99"
+      },
+      {
+        "aplicacion_id": "app-1791929730971-fd2ed2",
+        "usuario_id": "user-1791328733346-fc3e6e",
+        "fecha_calificacion": "2026-10-14T16:24:23.511Z",
+        "comentario": "",
+        "id": "rate-1791995063511-407fe9",
+        "puntuacion": 5,
+        "fecha_ultima_modificacion": "2026-10-14T16:24:23.511Z"
+      },
+      {
+        "usuario_id": "user-admin-1",
+        "id": "rate-1792539576327-038446",
+        "fecha_calificacion": "2026-10-20T23:39:36.327Z",
+        "comentario": "",
+        "aplicacion_id": "app-1791328824419-8b500a",
+        "puntuacion": 5,
+        "fecha_ultima_modificacion": "2026-10-20T23:39:36.327Z"
+      },
+      {
+        "fecha_calificacion": "2026-10-20T23:39:48.366Z",
+        "comentario": "",
+        "usuario_id": "user-admin-1",
+        "aplicacion_id": "app-1792538839460-f73865",
+        "fecha_ultima_modificacion": "2026-10-20T23:39:52.875Z",
+        "id": "rate-1792539588366-73f4bf",
+        "puntuacion": 5
+      },
+      {
+        "id": "rate-1792539634520-bfe98b",
+        "puntuacion": 5,
+        "usuario_id": "user-admin-1",
+        "fecha_ultima_modificacion": "2026-10-20T23:40:40.520Z",
+        "aplicacion_id": "app-1791929202466-33b588",
+        "comentario": "",
+        "fecha_calificacion": "2026-10-20T23:40:34.520Z"
+      }
+    ]
+  }
+}

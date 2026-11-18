@@ -1,9 +1,9 @@
-import { Router, Response } from 'express';
+import express, { Router, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import path from 'path';
 import fs from 'fs';
-import { db, User, Application, Category, Rating, INITIAL_TOOLS, SpecificationFile } from './db';
+import { db, User, Application, Category, Rating, INITIAL_TOOLS, SpecificationFile, VideoExplicativo } from './db';
 import {
   authenticate,
   requireAdmin,
@@ -25,6 +25,15 @@ const SPECS_DIR = path.resolve(UPLOADS_DIR, 'specs');
 if (!fs.existsSync(SPECS_DIR)) {
   fs.mkdirSync(SPECS_DIR, { recursive: true });
 }
+const VIDEOS_DIR = path.resolve(UPLOADS_DIR, 'videos');
+if (!fs.existsSync(VIDEOS_DIR)) {
+  fs.mkdirSync(VIDEOS_DIR, { recursive: true });
+}
+
+const rawVideoParser = express.raw({
+  type: ['video/*', 'application/octet-stream'],
+  limit: '32mb',
+});
 
 // -------------------------------------------------------------
 // Helper: Map application with author and category details
@@ -341,6 +350,7 @@ apiRouter.get('/apps', (req, res: Response) => {
     calificacion_minima,
     fecha_desde,
     solo_finales,
+    solo_pipeline,
     limit,
     offset,
   } = req.query;
@@ -348,6 +358,11 @@ apiRouter.get('/apps', (req, res: Response) => {
   // Filter only final projects if requested
   if (solo_finales === 'true' || solo_finales === '1') {
     apps = apps.filter((a) => Boolean(a.es_trabajo_final));
+  }
+
+  // Filter only Google AI Studio - GitHub - Vercel exercise projects if requested
+  if (solo_pipeline === 'true' || solo_pipeline === '1') {
+    apps = apps.filter((a) => Boolean(a.es_ejercitacion_pipeline));
   }
 
   // Search by app name
@@ -497,7 +512,19 @@ apiRouter.post(
   requireAlumnoOrAdmin,
   (req: AuthRequest, res: Response) => {
     if (!req.user) return;
-    const { nombre, logo, descripcion, enlace, categoria_id, herramienta, es_trabajo_final, especificacion } = req.body;
+    const {
+      nombre,
+      logo,
+      descripcion,
+      enlace,
+      categoria_id,
+      herramienta,
+      es_trabajo_final,
+      es_ejercitacion_pipeline,
+      repositorio_github,
+      especificacion,
+      video_explicativo,
+    } = req.body;
 
     if (!nombre || !String(nombre).trim()) {
       res.status(400).json({ error: 'El nombre de la aplicación es obligatorio.' });
@@ -529,6 +556,42 @@ apiRouter.post(
       return;
     }
 
+    // Validate GitHub repo URL if provided
+    let cleanGithub = '';
+    if (repositorio_github && String(repositorio_github).trim()) {
+      cleanGithub = String(repositorio_github).trim();
+      try {
+        new URL(cleanGithub);
+      } catch {
+        res.status(400).json({ error: 'El enlace al repositorio de GitHub debe ser una URL válida (ej: https://github.com/usuario/repo).' });
+        return;
+      }
+    }
+
+    // Validate video_explicativo if provided
+    let validVideo: VideoExplicativo | null = null;
+    if (video_explicativo && typeof video_explicativo === 'object' && video_explicativo.url) {
+      const vUrl = String(video_explicativo.url).trim();
+      if (video_explicativo.tipo === 'enlace') {
+        try {
+          new URL(vUrl);
+        } catch {
+          res.status(400).json({ error: 'El enlace del video explicativo debe ser una URL válida (ej: https://youtu.be/...).' });
+          return;
+        }
+      }
+      validVideo = {
+        tipo: video_explicativo.tipo === 'archivo' ? 'archivo' : 'enlace',
+        url: vUrl,
+        nombre_archivo: video_explicativo.nombre_archivo ? String(video_explicativo.nombre_archivo) : undefined,
+        tamano_bytes: typeof video_explicativo.tamano_bytes === 'number' ? video_explicativo.tamano_bytes : undefined,
+        tipo_mime: video_explicativo.tipo_mime ? String(video_explicativo.tipo_mime) : undefined,
+        herramienta_avatar: video_explicativo.herramienta_avatar ? String(video_explicativo.herramienta_avatar).trim() : undefined,
+        fecha_subida: video_explicativo.fecha_subida || new Date().toISOString(),
+        almacenamiento: video_explicativo.almacenamiento || (video_explicativo.tipo === 'archivo' ? 'local' : 'externo'),
+      };
+    }
+
     // Verify category exists
     const category = db.findCategoryById(categoria_id);
     if (!category) {
@@ -547,7 +610,10 @@ apiRouter.post(
       categoria_id,
       herramienta: String(herramienta).trim(),
       es_trabajo_final: Boolean(es_trabajo_final),
+      es_ejercitacion_pipeline: Boolean(es_ejercitacion_pipeline),
+      repositorio_github: cleanGithub,
       especificacion: especificacion || null,
+      video_explicativo: validVideo,
       fecha_publicacion: now,
       fecha_ultima_modificacion: now,
     };
@@ -585,7 +651,19 @@ apiRouter.put(
       return;
     }
 
-    const { nombre, logo, descripcion, enlace, categoria_id, herramienta, es_trabajo_final, especificacion } = req.body;
+    const {
+      nombre,
+      logo,
+      descripcion,
+      enlace,
+      categoria_id,
+      herramienta,
+      es_trabajo_final,
+      es_ejercitacion_pipeline,
+      repositorio_github,
+      especificacion,
+      video_explicativo,
+    } = req.body;
 
     if (!nombre || !String(nombre).trim()) {
       res.status(400).json({ error: 'El nombre es obligatorio.' });
@@ -607,6 +685,48 @@ apiRouter.put(
       return;
     }
 
+    let cleanGithub = existing.repositorio_github || '';
+    if (repositorio_github !== undefined) {
+      if (repositorio_github && String(repositorio_github).trim()) {
+        const gh = String(repositorio_github).trim();
+        try {
+          new URL(gh);
+          cleanGithub = gh;
+        } catch {
+          res.status(400).json({ error: 'El enlace al repositorio de GitHub debe ser una URL válida.' });
+          return;
+        }
+      } else {
+        cleanGithub = '';
+      }
+    }
+
+    if (video_explicativo !== undefined) {
+      if (video_explicativo && typeof video_explicativo === 'object' && video_explicativo.url) {
+        const vUrl = String(video_explicativo.url).trim();
+        if (video_explicativo.tipo === 'enlace') {
+          try {
+            new URL(vUrl);
+          } catch {
+            res.status(400).json({ error: 'El enlace del video explicativo debe ser una URL válida.' });
+            return;
+          }
+        }
+        existing.video_explicativo = {
+          tipo: video_explicativo.tipo === 'archivo' ? 'archivo' : 'enlace',
+          url: vUrl,
+          nombre_archivo: video_explicativo.nombre_archivo ? String(video_explicativo.nombre_archivo) : undefined,
+          tamano_bytes: typeof video_explicativo.tamano_bytes === 'number' ? video_explicativo.tamano_bytes : undefined,
+          tipo_mime: video_explicativo.tipo_mime ? String(video_explicativo.tipo_mime) : undefined,
+          herramienta_avatar: video_explicativo.herramienta_avatar ? String(video_explicativo.herramienta_avatar).trim() : undefined,
+          fecha_subida: video_explicativo.fecha_subida || new Date().toISOString(),
+          almacenamiento: video_explicativo.almacenamiento || (video_explicativo.tipo === 'archivo' ? 'local' : 'externo'),
+        };
+      } else {
+        existing.video_explicativo = null;
+      }
+    }
+
     if (categoria_id) {
       const cat = db.findCategoryById(categoria_id);
       if (!cat) {
@@ -625,6 +745,10 @@ apiRouter.put(
     if (es_trabajo_final !== undefined) {
       existing.es_trabajo_final = Boolean(es_trabajo_final);
     }
+    if (es_ejercitacion_pipeline !== undefined) {
+      existing.es_ejercitacion_pipeline = Boolean(es_ejercitacion_pipeline);
+    }
+    existing.repositorio_github = cleanGithub;
     if (especificacion !== undefined) {
       existing.especificacion = especificacion || null;
     }
@@ -1262,5 +1386,299 @@ apiRouter.get('/apps/:id/specification/download', (req, res: Response) => {
   // If Firebase Storage or external URL, redirect to download URL
   res.redirect(spec.url);
 });
+
+// =============================================================
+// VIDEO / AI AVATAR UPLOAD & MANAGEMENT (Firebase Storage + Local Fallback)
+// =============================================================
+
+async function processVideoBufferUpload(
+  filename: string,
+  buffer: Buffer,
+  mimeType: string,
+  folder: 'videos' | 'intro-videos' = 'videos',
+  extraMeta?: { herramienta_avatar?: string; titulo?: string; descripcion?: string; actualizado_por?: string }
+): Promise<VideoExplicativo> {
+  const sizeBytes = buffer.length;
+  // Keep max binary size <= 30MB so it fits comfortably under Cloud Run 32MB request ceiling
+  if (sizeBytes > 30 * 1024 * 1024) {
+    throw new Error('El video excede el tamaño máximo de 30 MB para subida directa. Puedes subirlo a YouTube/Drive y pegar el enlace.');
+  }
+
+  const cleanFilename = path.basename(filename).replace(/[^a-zA-Z0-9._-]/g, '_');
+  const safeFilename = `vid-${Date.now()}-${crypto.randomBytes(4).toString('hex')}-${cleanFilename}`;
+  const localFilePath = path.join(VIDEOS_DIR, safeFilename);
+
+  // 1. Guardar copia local persistente
+  fs.writeFileSync(localFilePath, buffer);
+
+  let finalUrl = `/uploads/videos/${safeFilename}`;
+  let storageType: 'firebase_storage' | 'local' = 'local';
+
+  // 2. Intentar subir a Firebase Storage
+  try {
+    const storagePath = `${folder}/${safeFilename}`;
+    const storageRef = ref(storage, storagePath);
+    await uploadBytes(storageRef, buffer, {
+      contentType: mimeType || 'video/mp4',
+    });
+    finalUrl = await getDownloadURL(storageRef);
+    storageType = 'firebase_storage';
+    console.log(`[Firebase Storage] Video subido con éxito: ${finalUrl}`);
+  } catch (storageErr: any) {
+    console.warn(
+      `[Firebase Storage] Aviso video: (${storageErr?.message || storageErr?.code}). Usando servidor local.`
+    );
+  }
+
+  const videoData: VideoExplicativo = {
+    tipo: 'archivo',
+    url: finalUrl,
+    nombre_archivo: filename,
+    tamano_bytes: sizeBytes,
+    tipo_mime: mimeType || 'video/mp4',
+    fecha_subida: new Date().toISOString(),
+    almacenamiento: storageType,
+  };
+
+  if (extraMeta?.herramienta_avatar) videoData.herramienta_avatar = extraMeta.herramienta_avatar;
+  if (extraMeta?.titulo) videoData.titulo = extraMeta.titulo;
+  if (extraMeta?.descripcion) videoData.descripcion = extraMeta.descripcion;
+  if (extraMeta?.actualizado_por) videoData.actualizado_por = extraMeta.actualizado_por;
+
+  return videoData;
+}
+
+// Upload raw video binary directly (returns VideoExplicativo metadata)
+apiRouter.post(
+  '/upload-video',
+  authenticate(true),
+  requireAlumnoOrAdmin,
+  rawVideoParser,
+  async (req: AuthRequest, res: Response) => {
+    try {
+      const rawHeaderName = req.headers['x-filename'] ? decodeURIComponent(String(req.headers['x-filename'])) : 'video.mp4';
+      const herramientaAvatar = req.headers['x-avatar-tool'] ? decodeURIComponent(String(req.headers['x-avatar-tool'])) : undefined;
+      const mimeType = req.headers['content-type'] || 'video/mp4';
+
+      if (!Buffer.isBuffer(req.body) || req.body.length === 0) {
+        res.status(400).json({ error: 'No se recibió el archivo de video.' });
+        return;
+      }
+
+      const video = await processVideoBufferUpload(rawHeaderName, req.body, mimeType, 'videos', {
+        herramienta_avatar: herramientaAvatar,
+      });
+
+      res.json({
+        message: 'Video explicativo subido con éxito.',
+        video,
+      });
+    } catch (err: any) {
+      console.error('Error subiendo video:', err);
+      res.status(400).json({ error: err.message || 'Error al procesar el video.' });
+    }
+  }
+);
+
+// Attach or update video directly on an existing application (supports raw binary OR JSON link)
+apiRouter.post(
+  '/apps/:id/video',
+  authenticate(true),
+  requireAlumnoOrAdmin,
+  rawVideoParser,
+  async (req: AuthRequest, res: Response) => {
+    if (!req.user) return;
+    const { id } = req.params;
+    const existing = db.findApplicationById(id);
+
+    if (!existing) {
+      res.status(404).json({ error: 'Aplicación no encontrada.' });
+      return;
+    }
+
+    const isAuthor = existing.autor_id === req.user.id;
+    const isAdmin = req.user.rol === 'ADMINISTRADOR';
+    if (!isAuthor && !isAdmin) {
+      res.status(403).json({ error: 'No tienes permiso para modificar el video de este trabajo.' });
+      return;
+    }
+
+    try {
+      let videoData: VideoExplicativo;
+
+      if (Buffer.isBuffer(req.body) && req.body.length > 0) {
+        const rawHeaderName = req.headers['x-filename'] ? decodeURIComponent(String(req.headers['x-filename'])) : 'presentacion.mp4';
+        const herramientaAvatar = req.headers['x-avatar-tool'] ? decodeURIComponent(String(req.headers['x-avatar-tool'])) : undefined;
+        const mimeType = req.headers['content-type'] || 'video/mp4';
+        videoData = await processVideoBufferUpload(rawHeaderName, req.body, mimeType, 'videos', {
+          herramienta_avatar: herramientaAvatar,
+        });
+      } else if (req.body && req.body.url) {
+        const cleanUrl = String(req.body.url).trim();
+        try {
+          new URL(cleanUrl);
+        } catch {
+          res.status(400).json({ error: 'El enlace del video debe ser una URL válida.' });
+          return;
+        }
+        videoData = {
+          tipo: 'enlace',
+          url: cleanUrl,
+          herramienta_avatar: req.body.herramienta_avatar ? String(req.body.herramienta_avatar).trim() : undefined,
+          fecha_subida: new Date().toISOString(),
+          almacenamiento: 'externo',
+        };
+      } else {
+        res.status(400).json({ error: 'Debes subir un archivo de video o proporcionar un enlace válido.' });
+        return;
+      }
+
+      existing.video_explicativo = videoData;
+      existing.fecha_ultima_modificacion = new Date().toISOString();
+      db.updateApplication(existing);
+
+      res.json({
+        message: 'Video explicativo adjuntado al trabajo exitosamente.',
+        app: enrichApplication(existing),
+      });
+    } catch (err: any) {
+      console.error('Error adjuntando video al trabajo:', err);
+      res.status(400).json({ error: err.message || 'Error al procesar el video.' });
+    }
+  }
+);
+
+// Remove video from an application
+apiRouter.delete(
+  '/apps/:id/video',
+  authenticate(true),
+  requireAlumnoOrAdmin,
+  (req: AuthRequest, res: Response) => {
+    if (!req.user) return;
+    const { id } = req.params;
+    const existing = db.findApplicationById(id);
+
+    if (!existing) {
+      res.status(404).json({ error: 'Aplicación no encontrada.' });
+      return;
+    }
+
+    const isAuthor = existing.autor_id === req.user.id;
+    const isAdmin = req.user.rol === 'ADMINISTRADOR';
+    if (!isAuthor && !isAdmin) {
+      res.status(403).json({ error: 'No tienes permiso para modificar este trabajo.' });
+      return;
+    }
+
+    existing.video_explicativo = null;
+    existing.fecha_ultima_modificacion = new Date().toISOString();
+    db.updateApplication(existing);
+
+    res.json({
+      message: 'Video explicativo removido del trabajo.',
+      app: enrichApplication(existing),
+    });
+  }
+);
+
+// =============================================================
+// PLATFORM INTRO VIDEO (TEACHER / ADMIN DASHBOARD)
+// =============================================================
+
+// Public: Get current dashboard intro video
+apiRouter.get('/settings/intro-video', (_req, res: Response) => {
+  const settings = db.getSettings();
+  res.json({ intro_video: settings.intro_video || null });
+});
+
+// Admin only: Set intro video via URL or pre-uploaded metadata
+apiRouter.post('/settings/intro-video', authenticate(true), requireAdmin, (req: AuthRequest, res: Response) => {
+  const { url, titulo, descripcion, herramienta_avatar, tipo, nombre_archivo, tamano_bytes, tipo_mime, almacenamiento } = req.body;
+
+  if (!url || !String(url).trim()) {
+    res.status(400).json({ error: 'Debes indicar un enlace o subir un archivo de video válido.' });
+    return;
+  }
+
+  const cleanUrl = String(url).trim();
+  if (tipo !== 'archivo') {
+    try {
+      new URL(cleanUrl);
+    } catch {
+      res.status(400).json({ error: 'El enlace del video explicativo debe ser una URL válida.' });
+      return;
+    }
+  }
+
+  const creatorName = req.user ? `${req.user.nombre} ${req.user.apellido}` : 'Profesor';
+  const introVideo: VideoExplicativo = {
+    tipo: tipo === 'archivo' ? 'archivo' : 'enlace',
+    url: cleanUrl,
+    nombre_archivo: nombre_archivo ? String(nombre_archivo) : undefined,
+    tamano_bytes: typeof tamano_bytes === 'number' ? tamano_bytes : undefined,
+    tipo_mime: tipo_mime ? String(tipo_mime) : undefined,
+    herramienta_avatar: herramienta_avatar ? String(herramienta_avatar).trim() : undefined,
+    titulo: titulo ? String(titulo).trim() : '¿De qué se trata este Contenedor de Trabajos Prácticos?',
+    descripcion: descripcion ? String(descripcion).trim() : '',
+    actualizado_por: creatorName,
+    fecha_subida: new Date().toISOString(),
+    almacenamiento: almacenamiento || (tipo === 'archivo' ? 'local' : 'externo'),
+  };
+
+  const updated = db.updateIntroVideo(introVideo);
+  res.json({
+    message: 'Video explicativo del dashboard guardado y publicado exitosamente.',
+    intro_video: updated.intro_video,
+  });
+});
+
+// Admin only: Upload raw video file directly as dashboard intro video
+apiRouter.post(
+  '/settings/intro-video/upload',
+  authenticate(true),
+  requireAdmin,
+  rawVideoParser,
+  async (req: AuthRequest, res: Response) => {
+    try {
+      const rawHeaderName = req.headers['x-filename'] ? decodeURIComponent(String(req.headers['x-filename'])) : 'intro-contenedor.mp4';
+      const titulo = req.headers['x-video-title'] ? decodeURIComponent(String(req.headers['x-video-title'])) : '¿De qué se trata este Contenedor de Trabajos Prácticos?';
+      const descripcion = req.headers['x-video-desc'] ? decodeURIComponent(String(req.headers['x-video-desc'])) : '';
+      const herramientaAvatar = req.headers['x-avatar-tool'] ? decodeURIComponent(String(req.headers['x-avatar-tool'])) : undefined;
+      const mimeType = req.headers['content-type'] || 'video/mp4';
+
+      if (!Buffer.isBuffer(req.body) || req.body.length === 0) {
+        res.status(400).json({ error: 'No se recibió el archivo de video.' });
+        return;
+      }
+
+      const creatorName = req.user ? `${req.user.nombre} ${req.user.apellido}` : 'Profesor';
+      const video = await processVideoBufferUpload(rawHeaderName, req.body, mimeType, 'intro-videos', {
+        titulo,
+        descripcion,
+        herramienta_avatar: herramientaAvatar,
+        actualizado_por: creatorName,
+      });
+
+      const updated = db.updateIntroVideo(video);
+      res.json({
+        message: 'Video explicativo del dashboard subido y publicado con éxito.',
+        intro_video: updated.intro_video,
+      });
+    } catch (err: any) {
+      console.error('Error subiendo video intro del docente:', err);
+      res.status(400).json({ error: err.message || 'Error al subir el video explicativo.' });
+    }
+  }
+);
+
+// Admin only: Delete dashboard intro video
+apiRouter.delete('/settings/intro-video', authenticate(true), requireAdmin, (_req: AuthRequest, res: Response) => {
+  db.updateIntroVideo(null);
+  res.json({
+    message: 'Video explicativo del dashboard removido.',
+    intro_video: null,
+  });
+});
+
 
 

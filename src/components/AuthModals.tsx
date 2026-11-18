@@ -134,28 +134,28 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
       <div
-        className="relative bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden flex flex-col"
+        className="relative bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div className="px-6 py-4 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-blue-700 text-white flex items-center justify-center font-bold text-xs">
               DB
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                 {mode === 'login' && 'Iniciar Sesión'}
                 {mode === 'register' && 'Registro de Alumnos'}
                 {mode === 'forgot' && 'Recuperar Contraseña'}
               </h3>
-              <p className="text-[10px] text-slate-500">Don Bosco • Habilidades Digitales 2026</p>
+              <p className="text-[10px] text-slate-500 dark:text-slate-400">Don Bosco • Habilidades Digitales 2026</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-xl transition cursor-pointer"
+            className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-xl transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -164,13 +164,13 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
         {/* Status alerts */}
         <div className="px-6 pt-4">
           {errorMessage && (
-            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-xs font-medium flex items-center gap-2 mb-2">
+            <div className="p-3 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-200 rounded-xl text-xs font-medium flex items-center gap-2 mb-2">
               <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
               <span>{errorMessage}</span>
             </div>
           )}
           {successMessage && (
-            <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs font-medium flex items-center gap-2 mb-2">
+            <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 rounded-xl text-xs font-medium flex items-center gap-2 mb-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>{successMessage}</span>
             </div>
@@ -181,11 +181,11 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
         {mode === 'login' && (
           <form onSubmit={handleLoginSubmit} className="p-6 pt-2 space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                 Email o Nombre de Usuario
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
                   <UserIcon className="w-4 h-4" />
                 </div>
                 <input
@@ -194,26 +194,26 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                   value={identificador}
                   onChange={(e) => setIdentificador(e.target.value)}
                   placeholder="ej: usuario o tu.correo@donbosco.edu.ar"
-                  className="w-full pl-9 pr-3.5 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                  className="w-full pl-9 pr-3.5 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                   Contraseña
                 </label>
                 <button
                   type="button"
                   onClick={() => onSwitchMode('forgot')}
-                  className="text-[11px] text-blue-600 hover:underline cursor-pointer"
+                  className="text-[11px] text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
                 >
                   ¿Olvidaste tu contraseña?
                 </button>
               </div>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
                   <Lock className="w-4 h-4" />
                 </div>
                 <input
@@ -222,7 +222,7 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3.5 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                  className="w-full pl-9 pr-3.5 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
@@ -235,12 +235,12 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
               {isSubmitting ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </button>
 
-            <div className="text-center text-xs text-slate-500 pt-2 border-t border-slate-100">
+            <div className="text-center text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
               ¿No tienes cuenta?{' '}
               <button
                 type="button"
                 onClick={() => onSwitchMode('register')}
-                className="font-bold text-blue-600 hover:underline cursor-pointer"
+                className="font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
               >
                 Regístrate aquí
               </button>
@@ -253,7 +253,7 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
           <form onSubmit={handleRegisterSubmit} className="p-6 pt-2 space-y-3">
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                   Nombre
                 </label>
                 <input
@@ -262,12 +262,12 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                   value={regNombre}
                   onChange={(e) => setRegNombre(e.target.value)}
                   placeholder="Mateo"
-                  className="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                  className="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                   Apellido
                 </label>
                 <input
@@ -276,17 +276,17 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                   value={regApellido}
                   onChange={(e) => setRegApellido(e.target.value)}
                   placeholder="Gómez"
-                  className="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                  className="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                 Nombre de usuario (Único)
               </label>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-xs">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 dark:text-slate-500 text-xs">
                   @
                 </span>
                 <input
@@ -295,17 +295,17 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                   value={regUsername}
                   onChange={(e) => setRegUsername(e.target.value)}
                   placeholder="mateo_gomez"
-                  className="w-full pl-7 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                  className="w-full pl-7 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                 Correo Electrónico (Único)
               </label>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 dark:text-slate-500">
                   <Mail className="w-3.5 h-3.5" />
                 </span>
                 <input
@@ -314,17 +314,17 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                   value={regEmail}
                   onChange={(e) => setRegEmail(e.target.value)}
                   placeholder="mateo@donbosco.edu.ar"
-                  className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                  className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                 Contraseña
               </label>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 dark:text-slate-500">
                   <Lock className="w-3.5 h-3.5" />
                 </span>
                 <input
@@ -333,12 +333,12 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                   value={regPassword}
                   onChange={(e) => setRegPassword(e.target.value)}
                   placeholder="Mínimo 6 caracteres"
-                  className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                  className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
 
-            <p className="text-[10px] text-slate-500 bg-slate-50 p-2 rounded-lg border border-slate-200">
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/60 p-2 rounded-lg border border-slate-200 dark:border-slate-700">
               ℹ️ Tu cuenta tendrá automáticamente rol de <strong>ALUMNO</strong> y quedará activa
               de inmediato sin necesidad de validación externa.
             </p>
@@ -351,12 +351,12 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
               {isSubmitting ? 'Registrando cuenta...' : 'Crear Cuenta de Alumno'}
             </button>
 
-            <div className="text-center text-xs text-slate-500 pt-2 border-t border-slate-100">
+            <div className="text-center text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
               ¿Ya tienes una cuenta?{' '}
               <button
                 type="button"
                 onClick={() => onSwitchMode('login')}
-                className="font-bold text-blue-600 hover:underline cursor-pointer"
+                className="font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
               >
                 Inicia sesión
               </button>
@@ -369,12 +369,12 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
           <div className="p-6 pt-2 space-y-4">
             {forgotStep === 1 ? (
               <form onSubmit={handleForgotSubmit} className="space-y-4">
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   Ingresa tu correo electrónico registrado para recuperar el acceso a tu cuenta.
                 </p>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Correo Electrónico
                   </label>
                   <input
@@ -383,7 +383,7 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                     value={forgotEmail}
                     onChange={(e) => setForgotEmail(e.target.value)}
                     placeholder="tu.email@donbosco.edu.ar"
-                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                   />
                 </div>
 
@@ -398,7 +398,7 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
             ) : (
               <form onSubmit={handleResetSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Código de Recuperación
                   </label>
                   <input
@@ -407,12 +407,12 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                     value={resetToken}
                     onChange={(e) => setResetToken(e.target.value)}
                     placeholder="Código recibido"
-                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl font-mono text-slate-800"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono text-slate-800 dark:text-slate-200"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Nueva Contraseña
                   </label>
                   <input
@@ -421,7 +421,7 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Mínimo 6 caracteres"
-                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                   />
                 </div>
 
@@ -435,11 +435,11 @@ export const AuthModals: React.FC<AuthModalsProps> = ({ mode, onClose, onSwitchM
               </form>
             )}
 
-            <div className="text-center text-xs text-slate-500 pt-2 border-t border-slate-100">
+            <div className="text-center text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => onSwitchMode('login')}
-                className="font-bold text-blue-600 hover:underline cursor-pointer"
+                className="font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
               >
                 Volver al inicio de sesión
               </button>

@@ -44,6 +44,10 @@
         "categoria_id": { "type": "string" },
         "herramienta": { "type": "string" },
         "es_trabajo_final": { "type": "boolean" },
+        "es_ejercitacion_pipeline": { "type": "boolean" },
+        "repositorio_github": { "type": "string" },
+        "especificacion": { "type": "object" },
+        "video_explicativo": { "type": "object" },
         "fecha_publicacion": { "type": "string" },
         "fecha_ultima_modificacion": { "type": "string" }
       },
@@ -63,6 +67,14 @@
         "fecha_ultima_modificacion": { "type": "string" }
       },
       "required": ["id", "aplicacion_id", "usuario_id", "puntuacion", "fecha_calificacion"]
+    },
+    "PlatformSettings": {
+      "title": "PlatformSettings",
+      "description": "Configuración general de la plataforma y video explicativo del docente",
+      "type": "object",
+      "properties": {
+        "intro_video": { "type": "object" }
+      }
     }
   },
   "firestore": {
@@ -81,6 +93,10 @@
     "/ratings/{ratingId}": {
       "schema": "Rating",
       "description": "Calificaciones de trabajos prácticos"
+    },
+    "/settings/{settingId}": {
+      "schema": "PlatformSettings",
+      "description": "Configuración del contenedor y video explicativo del docente"
     }
   }
 }

@@ -53,7 +53,7 @@ export const RankingView: React.FC<RankingViewProps> = ({ onSelectApp, onSelectA
       );
     }
     return (
-      <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center border border-slate-200">
+      <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center border border-slate-200 dark:border-slate-700">
         #{pos}
       </div>
     );
@@ -63,7 +63,7 @@ export const RankingView: React.FC<RankingViewProps> = ({ onSelectApp, onSelectA
     return (
       <div className="py-16 text-center">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent mb-3"></div>
-        <p className="text-xs text-slate-500 font-medium">Cargando tabla de posiciones...</p>
+        <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Cargando tabla de posiciones...</p>
       </div>
     );
   }
@@ -91,22 +91,22 @@ export const RankingView: React.FC<RankingViewProps> = ({ onSelectApp, onSelectA
       </div>
 
       {rankedApps.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center">
-          <Trophy className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-slate-800 mb-1">Aún no hay proyectos en el ranking</h3>
-          <p className="text-xs text-slate-500 max-w-md mx-auto">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-12 text-center">
+          <Trophy className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+          <h3 className="text-base font-bold text-slate-800 dark:text-white mb-1">Aún no hay proyectos en el ranking</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
             Para figurar en el ranking, las aplicaciones deben recibir al menos una calificación por
             parte de los compañeros o docentes.
           </p>
         </div>
       ) : (
-        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden">
-          <div className="divide-y divide-slate-100">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div className="divide-y divide-slate-100 dark:divide-slate-800">
             {rankedApps.map((app) => (
               <div
                 key={app.id}
                 onClick={() => onSelectApp(app)}
-                className="p-4 sm:p-5 flex items-center gap-4 hover:bg-blue-50/40 transition cursor-pointer group"
+                className="p-4 sm:p-5 flex items-center gap-4 hover:bg-blue-50/40 dark:hover:bg-slate-800/60 transition cursor-pointer group"
               >
                 {/* Position Badge */}
                 <div className="shrink-0 flex items-center justify-center w-10">
@@ -119,19 +119,19 @@ export const RankingView: React.FC<RankingViewProps> = ({ onSelectApp, onSelectA
                 {/* App Details */}
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-1.5 mb-1">
-                    <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
+                    <span className="text-[11px] font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/70 px-2 py-0.5 rounded border border-blue-200/60 dark:border-blue-800">
                       {app.herramienta}
                     </span>
-                    <span className="text-[11px] font-medium text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                    <span className="text-[11px] font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
                       {app.categoria_nombre}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-700 transition line-clamp-1">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition line-clamp-1">
                     {app.nombre}
                   </h3>
 
-                  <div className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-0.5">
                     <span>Autor:</span>
                     <button
                       type="button"
@@ -139,7 +139,7 @@ export const RankingView: React.FC<RankingViewProps> = ({ onSelectApp, onSelectA
                         e.stopPropagation();
                         onSelectAuthor(app.autor_id);
                       }}
-                      className="font-semibold text-slate-700 hover:text-blue-600 hover:underline cursor-pointer"
+                      className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline cursor-pointer"
                     >
                       {app.autor_nombre} {app.autor_apellido}
                     </button>
@@ -150,17 +150,17 @@ export const RankingView: React.FC<RankingViewProps> = ({ onSelectApp, onSelectA
                 <div className="shrink-0 text-right">
                   <div className="flex items-center justify-end gap-1.5">
                     <Star className="w-4 h-4 text-amber-500 fill-amber-400" />
-                    <span className="text-base font-extrabold text-slate-900">
+                    <span className="text-base font-extrabold text-slate-900 dark:text-white">
                       {app.promedio_calificacion.toFixed(1)}
                     </span>
                   </div>
-                  <div className="text-[11px] text-slate-500 font-medium">
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                     {app.cantidad_votos} {app.cantidad_votos === 1 ? 'voto' : 'votos'}
                   </div>
                 </div>
 
                 {/* Arrow */}
-                <div className="shrink-0 pl-2 text-slate-300 group-hover:text-blue-600 transition">
+                <div className="shrink-0 pl-2 text-slate-300 dark:text-slate-600 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
                   <ArrowRight className="w-5 h-5" />
                 </div>
               </div>

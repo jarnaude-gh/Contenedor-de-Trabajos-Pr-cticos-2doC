@@ -348,7 +348,9 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             type="button"
             onClick={() => setActiveTab('stats')}
             className={`px-3.5 py-1.5 rounded-xl transition cursor-pointer ${
-              activeTab === 'stats' ? 'bg-white text-blue-900 shadow-xs' : 'text-white/80 hover:text-white'
+              activeTab === 'stats'
+                ? 'bg-white dark:bg-slate-800 text-blue-900 dark:text-blue-300 shadow-xs'
+                : 'text-white/80 hover:text-white'
             }`}
           >
             Estadísticas
@@ -358,7 +360,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             onClick={() => setActiveTab('categories')}
             className={`px-3.5 py-1.5 rounded-xl transition cursor-pointer relative ${
               activeTab === 'categories'
-                ? 'bg-white text-blue-900 shadow-xs'
+                ? 'bg-white dark:bg-slate-800 text-blue-900 dark:text-blue-300 shadow-xs'
                 : 'text-white/80 hover:text-white'
             }`}
           >
@@ -373,7 +375,9 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             type="button"
             onClick={() => setActiveTab('users')}
             className={`px-3.5 py-1.5 rounded-xl transition cursor-pointer ${
-              activeTab === 'users' ? 'bg-white text-blue-900 shadow-xs' : 'text-white/80 hover:text-white'
+              activeTab === 'users'
+                ? 'bg-white dark:bg-slate-800 text-blue-900 dark:text-blue-300 shadow-xs'
+                : 'text-white/80 hover:text-white'
             }`}
           >
             Usuarios ({users.length})
@@ -383,7 +387,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             onClick={() => setActiveTab('maintenance')}
             className={`px-3.5 py-1.5 rounded-xl transition cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'maintenance'
-                ? 'bg-white text-blue-900 shadow-xs'
+                ? 'bg-white dark:bg-slate-800 text-blue-900 dark:text-blue-300 shadow-xs'
                 : 'text-white/80 hover:text-white'
             }`}
           >
@@ -394,7 +398,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       </div>
 
       {actionFeedback && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-2xl text-xs font-semibold flex items-center gap-2 animate-fadeIn">
+        <div className="p-4 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 rounded-2xl text-xs font-semibold flex items-center gap-2 animate-fadeIn">
           <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>{actionFeedback}</span>
         </div>
@@ -405,78 +409,78 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
         <div className="space-y-6">
           {/* Key metric cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+            <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Alumnos Registrados
                 </span>
-                <Users className="w-5 h-5 text-blue-600" />
+                <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
               </div>
-              <div className="text-3xl font-black text-slate-900">{stats.total_alumnos}</div>
-              <span className="text-[11px] text-slate-500">Cuentas activas en la plataforma</span>
+              <div className="text-3xl font-black text-slate-900 dark:text-white">{stats.total_alumnos}</div>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">Cuentas activas en la plataforma</span>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+            <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Trabajos Publicados
                 </span>
-                <FolderGit2 className="w-5 h-5 text-indigo-600" />
+                <FolderGit2 className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
               </div>
-              <div className="text-3xl font-black text-slate-900">{stats.total_trabajos}</div>
-              <span className="text-[11px] text-slate-500">Proyectos Vibe Coding activos</span>
+              <div className="text-3xl font-black text-slate-900 dark:text-white">{stats.total_trabajos}</div>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">Proyectos Vibe Coding activos</span>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+            <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Total Calificaciones
                 </span>
                 <Star className="w-5 h-5 text-amber-500 fill-amber-400" />
               </div>
-              <div className="text-3xl font-black text-slate-900">{stats.total_calificaciones}</div>
-              <span className="text-[11px] text-slate-500">Votos emitidos por alumnos</span>
+              <div className="text-3xl font-black text-slate-900 dark:text-white">{stats.total_calificaciones}</div>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">Votos emitidos por alumnos</span>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+            <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Promedio General
                 </span>
-                <BarChart3 className="w-5 h-5 text-emerald-600" />
+                <BarChart3 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <div className="text-3xl font-black text-slate-900">
+              <div className="text-3xl font-black text-slate-900 dark:text-white">
                 {stats.promedio_general.toFixed(1)}
               </div>
-              <span className="text-[11px] text-slate-500">Puntaje global del curso (1-5)</span>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">Puntaje global del curso (1-5)</span>
             </div>
           </div>
 
           {/* Differentiated Rankings: Mejor Calificado vs Más Votado */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Trabajos Mejor Calificados (ordenados por promedio DESC) */}
-            <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
                 <div className="flex items-center gap-2">
-                  <div className="p-2 bg-amber-50 rounded-xl text-amber-600">
+                  <div className="p-2 bg-amber-50 dark:bg-amber-950/70 rounded-xl text-amber-600 dark:text-amber-400">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900">
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                       Trabajos Mejor Calificados
                     </h3>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-[11px] text-slate-400 dark:text-slate-500">
                       Ordenados estrictamente por mayor promedio de estrellas
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-amber-600 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/70 px-2.5 py-1 rounded-lg">
                   Top Promedios
                 </span>
               </div>
 
               {stats.trabajos_mejor_calificados.length === 0 ? (
-                <p className="text-xs text-slate-500 italic py-4 text-center">
+                <p className="text-xs text-slate-500 dark:text-slate-400 italic py-4 text-center">
                   Aún no hay calificaciones registradas.
                 </p>
               ) : (
@@ -485,27 +489,27 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                     <div
                       key={app.id}
                       onClick={() => onSelectApp(app)}
-                      className="p-3 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 transition flex items-center justify-between gap-3 cursor-pointer"
+                      className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-700 hover:bg-blue-50/30 dark:hover:bg-slate-850 transition flex items-center justify-between gap-3 cursor-pointer"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <span className="text-xs font-bold text-slate-400 w-4">#{idx + 1}</span>
+                        <span className="text-xs font-bold text-slate-400 dark:text-slate-500 w-4">#{idx + 1}</span>
                         <AppLogo logo={app.logo} name={app.nombre} size="sm" />
                         <div className="min-w-0">
-                          <h4 className="text-xs font-bold text-slate-900 truncate">
+                          <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                             {app.nombre}
                           </h4>
-                          <span className="text-[11px] text-slate-500">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">
                             {app.autor_nombre} {app.autor_apellido}
                           </span>
                         </div>
                       </div>
 
                       <div className="text-right shrink-0">
-                        <div className="flex items-center gap-1 font-extrabold text-xs text-amber-600">
+                        <div className="flex items-center gap-1 font-extrabold text-xs text-amber-600 dark:text-amber-400">
                           <Star className="w-3.5 h-3.5 fill-amber-400" />
                           <span>{app.promedio_calificacion.toFixed(1)}</span>
                         </div>
-                        <span className="text-[10px] text-slate-400">
+                        <span className="text-[10px] text-slate-400 dark:text-slate-500">
                           {app.cantidad_votos} {app.cantidad_votos === 1 ? 'voto' : 'votos'}
                         </span>
                       </div>
@@ -516,26 +520,26 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             </div>
 
             {/* Trabajos Más Votados (ordenados por cantidad de votos DESC) */}
-            <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
                 <div className="flex items-center gap-2">
-                  <div className="p-2 bg-blue-50 rounded-xl text-blue-600">
+                  <div className="p-2 bg-blue-50 dark:bg-blue-950/70 rounded-xl text-blue-600 dark:text-blue-400">
                     <Flame className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900">Trabajos Más Votados</h3>
-                    <p className="text-[11px] text-slate-400">
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">Trabajos Más Votados</h3>
+                    <p className="text-[11px] text-slate-400 dark:text-slate-500">
                       Ordenados estrictamente por mayor volumen de participación
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-blue-600 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/70 px-2.5 py-1 rounded-lg">
                   Top Participación
                 </span>
               </div>
 
               {stats.trabajos_mas_votados.length === 0 ? (
-                <p className="text-xs text-slate-500 italic py-4 text-center">
+                <p className="text-xs text-slate-500 dark:text-slate-400 italic py-4 text-center">
                   Aún no hay calificaciones registradas.
                 </p>
               ) : (
@@ -544,26 +548,26 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                     <div
                       key={app.id}
                       onClick={() => onSelectApp(app)}
-                      className="p-3 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 transition flex items-center justify-between gap-3 cursor-pointer"
+                      className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-700 hover:bg-blue-50/30 dark:hover:bg-slate-850 transition flex items-center justify-between gap-3 cursor-pointer"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <span className="text-xs font-bold text-slate-400 w-4">#{idx + 1}</span>
+                        <span className="text-xs font-bold text-slate-400 dark:text-slate-500 w-4">#{idx + 1}</span>
                         <AppLogo logo={app.logo} name={app.nombre} size="sm" />
                         <div className="min-w-0">
-                          <h4 className="text-xs font-bold text-slate-900 truncate">
+                          <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                             {app.nombre}
                           </h4>
-                          <span className="text-[11px] text-slate-500">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">
                             {app.autor_nombre} {app.autor_apellido}
                           </span>
                         </div>
                       </div>
 
                       <div className="text-right shrink-0">
-                        <div className="font-extrabold text-xs text-blue-700">
+                        <div className="font-extrabold text-xs text-blue-700 dark:text-blue-400">
                           {app.cantidad_votos} {app.cantidad_votos === 1 ? 'voto' : 'votos'}
                         </div>
-                        <div className="text-[10px] text-slate-500">
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400">
                           Promedio: ★ {app.promedio_calificacion.toFixed(1)}
                         </div>
                       </div>
@@ -577,15 +581,15 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
           {/* Secondary stats: Categorías más utilizadas y Alumnos con más publicaciones */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Categorías más utilizadas */}
-            <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
-              <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2">
+            <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-2">
                 Categorías Más Utilizadas
               </h3>
               <div className="space-y-2">
                 {stats.categorias_mas_utilizadas.map((cat) => (
                   <div key={cat.id} className="flex items-center justify-between text-xs py-1">
-                    <span className="text-slate-700 font-medium">{cat.nombre}</span>
-                    <span className="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded-md">
+                    <span className="text-slate-700 dark:text-slate-300 font-medium">{cat.nombre}</span>
+                    <span className="font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
                       {cat.cantidad} {cat.cantidad === 1 ? 'proyecto' : 'proyectos'}
                     </span>
                   </div>
@@ -594,8 +598,8 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             </div>
 
             {/* Alumnos con mayor cantidad de publicaciones */}
-            <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
-              <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2">
+            <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-2">
                 Alumnos con Más Publicaciones
               </h3>
               <div className="space-y-2">
@@ -603,12 +607,12 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   <div
                     key={al.id}
                     onClick={() => onSelectAuthor(al.id)}
-                    className="flex items-center justify-between text-xs py-1.5 px-2 rounded-lg hover:bg-slate-50 transition cursor-pointer"
+                    className="flex items-center justify-between text-xs py-1.5 px-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer"
                   >
-                    <span className="text-blue-700 font-semibold hover:underline">
+                    <span className="text-blue-700 dark:text-blue-400 font-semibold hover:underline">
                       {al.nombre}
                     </span>
-                    <span className="font-bold text-slate-900 bg-blue-50 text-blue-800 px-2 py-0.5 rounded-md">
+                    <span className="font-bold text-slate-900 dark:text-white bg-blue-50 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded-md">
                       {al.cantidad} {al.cantidad === 1 ? 'trabajo' : 'trabajos'}
                     </span>
                   </div>
@@ -621,30 +625,30 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
 
       {/* TAB 2: CATEGORÍAS PENDIENTES */}
       {activeTab === 'categories' && (
-        <div className="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-xs">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 space-y-4 shadow-xs">
           <div>
-            <h3 className="text-base font-bold text-slate-900">Categorías Propuestas por Alumnos</h3>
-            <p className="text-xs text-slate-500">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Categorías Propuestas por Alumnos</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Evalúa las solicitudes de nuevas categorías. Al aprobar una propuesta, pasa a estar
               disponible para todos de forma inmediata. Al rechazarla, se elimina definitivamente.
             </p>
           </div>
 
           {pendingCategories.length === 0 ? (
-            <div className="p-12 text-center text-slate-500 text-xs italic bg-slate-50 rounded-2xl border border-slate-200">
+            <div className="p-12 text-center text-slate-500 dark:text-slate-400 text-xs italic bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700">
               No hay solicitudes de categorías pendientes de revisión en este momento.
             </div>
           ) : (
-            <div className="divide-y divide-slate-100 border border-slate-200 rounded-2xl overflow-hidden">
+            <div className="divide-y divide-slate-100 dark:divide-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
               {pendingCategories.map((cat) => (
                 <div
                   key={cat.id}
-                  className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white hover:bg-slate-50/50 transition"
+                  className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-slate-900 hover:bg-slate-50/50 dark:hover:bg-slate-850 transition"
                 >
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">{cat.nombre}</h4>
-                    <p className="text-xs text-slate-500">
-                      Propuesta por: <strong>{cat.usuario_proponente_nombre || 'Alumno'}</strong> •{' '}
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">{cat.nombre}</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Propuesta por: <strong className="text-slate-700 dark:text-slate-300">{cat.usuario_proponente_nombre || 'Alumno'}</strong> •{' '}
                       {new Date(cat.fecha_creacion).toLocaleDateString('es-AR')}
                     </p>
                   </div>
@@ -663,7 +667,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                       type="button"
                       disabled={processing}
                       onClick={() => handleRejectCategory(cat.id)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl transition cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/50 hover:bg-rose-100 dark:hover:bg-rose-900/50 border border-rose-200 dark:border-rose-800 rounded-xl transition cursor-pointer"
                     >
                       <X className="w-3.5 h-3.5" />
                       Rechazar
@@ -678,19 +682,19 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
 
       {/* TAB 3: USUARIOS REGISTRADOS (SOLO CONSULTA) */}
       {activeTab === 'users' && (
-        <div className="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-xs">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 space-y-4 shadow-xs">
           <div>
-            <h3 className="text-base font-bold text-slate-900">Listado de Usuarios Registrados</h3>
-            <p className="text-xs text-slate-500">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Listado de Usuarios Registrados</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Vista informativa y de consulta de los estudiantes y el docente preconfigurado. Por
               especificación de seguridad, no se permite modificar roles ni eliminar usuarios desde
               esta interfaz.
             </p>
           </div>
 
-          <div className="overflow-x-auto border border-slate-200 rounded-2xl">
+          <div className="overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-2xl">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase tracking-wider">
+              <thead className="bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 font-bold uppercase tracking-wider">
                 <tr>
                   <th className="p-3">Nombre y Apellido</th>
                   <th className="p-3">Usuario</th>
@@ -700,27 +704,27 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   <th className="p-3">Fecha de Registro</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                 {users.map((u) => (
-                  <tr key={u.id} className="hover:bg-slate-50/70 transition">
-                    <td className="p-3 font-semibold text-slate-900">
+                  <tr key={u.id} className="hover:bg-slate-50/70 dark:hover:bg-slate-850 transition">
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">
                       {u.nombre} {u.apellido}
                     </td>
-                    <td className="p-3 font-mono text-slate-500">@{u.nombre_usuario}</td>
-                    <td className="p-3 text-slate-600">{u.email}</td>
+                    <td className="p-3 font-mono text-slate-500 dark:text-slate-400">@{u.nombre_usuario}</td>
+                    <td className="p-3 text-slate-600 dark:text-slate-300">{u.email}</td>
                     <td className="p-3">
                       <span
                         className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
                           u.rol === 'ADMINISTRADOR'
-                            ? 'bg-purple-100 text-purple-800'
-                            : 'bg-blue-50 text-blue-700'
+                            ? 'bg-purple-100 dark:bg-purple-950/70 text-purple-800 dark:text-purple-300'
+                            : 'bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300'
                         }`}
                       >
                         {u.rol}
                       </span>
                     </td>
-                    <td className="p-3 font-bold text-slate-900">{u.cantidad_aplicaciones || 0}</td>
-                    <td className="p-3 text-slate-400">
+                    <td className="p-3 font-bold text-slate-900 dark:text-white">{u.cantidad_aplicaciones || 0}</td>
+                    <td className="p-3 text-slate-400 dark:text-slate-500">
                       {u.fecha_creacion
                         ? new Date(u.fecha_creacion).toLocaleDateString('es-AR')
                         : '–'}
@@ -737,14 +741,14 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       {activeTab === 'maintenance' && (
         <div className="space-y-6">
           {/* Header Card */}
-          <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
-                  <HardDrive className="w-5 h-5 text-blue-700" />
+                <h3 className="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <HardDrive className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                   <span>Copias de Seguridad (Backup) y Administración de Datos</span>
                 </h3>
-                <p className="text-xs text-slate-500 mt-1 max-w-2xl leading-relaxed">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-2xl leading-relaxed">
                   Herramientas directas para exportar copias de seguridad de toda la información (alumnos, trabajos, calificaciones y categorías), recuperar copias guardadas y realizar limpiezas seguras con sincronización en Google Cloud Firestore.
                 </p>
               </div>
@@ -753,7 +757,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                 type="button"
                 onClick={loadAdminData}
                 disabled={processing}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer self-start sm:self-auto shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition cursor-pointer self-start sm:self-auto shrink-0"
                 title="Actualizar estado"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${processing ? 'animate-spin' : ''}`} />
@@ -762,22 +766,22 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             </div>
 
             {/* Live Stats Overview */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-100">
-              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                <span className="text-[11px] font-semibold text-slate-500 block">Alumnos Activos</span>
-                <span className="text-lg font-black text-slate-900">{stats?.total_alumnos || 0}</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 block">Alumnos Activos</span>
+                <span className="text-lg font-black text-slate-900 dark:text-white">{stats?.total_alumnos || 0}</span>
               </div>
-              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                <span className="text-[11px] font-semibold text-slate-500 block">Trabajos Totales</span>
-                <span className="text-lg font-black text-blue-700">{stats?.total_trabajos || 0}</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 block">Trabajos Totales</span>
+                <span className="text-lg font-black text-blue-700 dark:text-blue-400">{stats?.total_trabajos || 0}</span>
               </div>
-              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                <span className="text-[11px] font-semibold text-slate-500 block">Calificaciones</span>
-                <span className="text-lg font-black text-amber-600">{stats?.total_calificaciones || 0}</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 block">Calificaciones</span>
+                <span className="text-lg font-black text-amber-600 dark:text-amber-400">{stats?.total_calificaciones || 0}</span>
               </div>
-              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                <span className="text-[11px] font-semibold text-slate-500 block">Puntos de Resguardo</span>
-                <span className="text-lg font-black text-emerald-700">{snapshots.length}</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 block">Puntos de Resguardo</span>
+                <span className="text-lg font-black text-emerald-700 dark:text-emerald-400">{snapshots.length}</span>
               </div>
             </div>
           </div>
@@ -785,23 +789,23 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
           {/* 3 Main Action Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {/* Card 1: Hacer Backup */}
-            <div className="bg-white rounded-3xl border border-blue-200 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-blue-200 dark:border-blue-900/60 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 flex items-center justify-center">
                     <Download className="w-5 h-5" />
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800">
                     Exportar Copia
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-slate-900">1. Hacer Backup de Toda la Información</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <h4 className="text-base font-bold text-slate-900 dark:text-white">1. Hacer Backup de Toda la Información</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   Exporta una copia de seguridad íntegra con todos los trabajos subidos (incluidos trabajos finales), calificaciones, comentarios, cuentas de alumnos y categorías. Se descarga en formato <strong>.json</strong> y se resguarda una copia en el servidor.
                 </p>
               </div>
 
-              <div className="pt-5 mt-4 border-t border-slate-100 space-y-2">
+              <div className="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
                 <button
                   type="button"
                   disabled={processing}
@@ -815,7 +819,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   type="button"
                   disabled={processing}
                   onClick={handleCreateServerSnapshot}
-                  className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold text-blue-700 hover:bg-blue-50 border border-blue-200/80 rounded-xl transition cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/50 border border-blue-200/80 dark:border-blue-800 rounded-xl transition cursor-pointer"
                 >
                   <HardDrive className="w-3.5 h-3.5" />
                   <span>Guardar punto en servidor sin descargar</span>
@@ -824,24 +828,24 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             </div>
 
             {/* Card 2: Recuperar Backup */}
-            <div className="bg-white rounded-3xl border border-emerald-200 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-emerald-200 dark:border-emerald-900/60 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center">
                     <Upload className="w-5 h-5" />
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800">
                     Restaurar Copia
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-slate-900">2. Recuperar Información de Backup</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <h4 className="text-base font-bold text-slate-900 dark:text-white">2. Recuperar Información de Backup</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   Restaura el estado íntegro de la aplicación desde un archivo <strong>.json</strong> de backup guardado previamente. El sistema validará el contenido, mostrará un resumen previo y sincronizará todo automáticamente con Google Cloud Firestore.
                 </p>
               </div>
 
-              <div className="pt-5 mt-4 border-t border-slate-100 space-y-2">
-                <label className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold text-emerald-900 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 rounded-xl transition cursor-pointer shadow-xs">
+              <div className="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                <label className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold text-emerald-900 dark:text-emerald-200 bg-emerald-100 dark:bg-emerald-900/60 hover:bg-emerald-200 dark:hover:bg-emerald-800/80 border border-emerald-300 dark:border-emerald-700 rounded-xl transition cursor-pointer shadow-xs">
                   <FileJson className="w-4 h-4" />
                   <span>Subir y Recuperar archivo (.json)</span>
                   <input
@@ -851,33 +855,33 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                     className="hidden"
                   />
                 </label>
-                <p className="text-[10px] text-slate-400 text-center">
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 text-center">
                   O usa el botón "Restaurar" en la lista de puntos históricos abajo.
                 </p>
               </div>
             </div>
 
             {/* Card 3: Limpiar Todo */}
-            <div className="bg-white rounded-3xl border border-rose-200 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-rose-200 dark:border-rose-900/60 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-rose-100 dark:bg-rose-900/60 text-rose-700 dark:text-rose-300 flex items-center justify-center">
                     <Trash2 className="w-5 h-5" />
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-50 text-rose-700 border border-rose-200/60">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-50 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 border border-rose-200/60 dark:border-rose-800">
                     Reinicio Seguro
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-slate-900">3. Eliminar Toda la Información (Limpiar Todo)</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <h4 className="text-base font-bold text-slate-900 dark:text-white">3. Eliminar Toda la Información (Limpiar Todo)</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   Elimina todas las aplicaciones publicadas, calificaciones y cuentas de alumnos para iniciar un ciclo nuevo con la base de datos limpia.
-                  <span className="block mt-1 font-semibold text-rose-950">
+                  <span className="block mt-1 font-semibold text-rose-950 dark:text-rose-300">
                     Tu usuario Administrador y las categorías Don Bosco se conservarán intactas.
                   </span>
                 </p>
               </div>
 
-              <div className="pt-5 mt-4 border-t border-slate-100 space-y-2">
+              <div className="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
                 <button
                   type="button"
                   disabled={processing}
@@ -887,7 +891,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   <AlertTriangle className="w-4 h-4" />
                   <span>Eliminar toda la información existente</span>
                 </button>
-                <p className="text-[10px] text-slate-400 text-center">
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 text-center">
                   Crea un resguardo automático previo antes de limpiar.
                 </p>
               </div>
@@ -895,51 +899,51 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
           </div>
 
           {/* Section: Server Snapshots History */}
-          <div className="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-xs">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 space-y-4 shadow-xs">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-slate-500" />
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   <span>Puntos de Restauración Automáticos en el Servidor</span>
                 </h4>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   Cada vez que descargas un backup o realizas cambios mayores, se resguarda una copia histórica aquí.
                 </p>
               </div>
             </div>
 
             {snapshots.length === 0 ? (
-              <div className="p-8 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200 text-xs text-slate-500 space-y-2">
-                <HardDrive className="w-8 h-8 text-slate-300 mx-auto" />
+              <div className="p-8 text-center bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 space-y-2">
+                <HardDrive className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto" />
                 <p>No hay puntos de restauración guardados aún.</p>
-                <p className="text-[11px] text-slate-400">
+                <p className="text-[11px] text-slate-400 dark:text-slate-500">
                   Haz clic en "Descargar Copia de Seguridad" arriba para crear el primero.
                 </p>
               </div>
             ) : (
-              <div className="divide-y divide-slate-100 border border-slate-100 rounded-2xl overflow-hidden">
+              <div className="divide-y divide-slate-100 dark:divide-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl overflow-hidden">
                 {snapshots.slice(0, 8).map((snap) => (
                   <div
                     key={snap.id}
-                    className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white hover:bg-slate-50/70 transition"
+                    className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-slate-900 hover:bg-slate-50/70 dark:hover:bg-slate-850 transition"
                   >
                     <div className="space-y-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-xs text-slate-900 truncate">{snap.filename}</span>
-                        <span className="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
+                        <span className="font-bold text-xs text-slate-900 dark:text-white truncate">{snap.filename}</span>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
                           {(snap.sizeBytes / 1024).toFixed(1)} KB
                         </span>
                       </div>
-                      <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+                      <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                         <span>{new Date(snap.timestamp).toLocaleString('es-AR')}</span>
                         <span>•</span>
                         <span>Creador: {snap.creator}</span>
                         <span>•</span>
-                        <span className="font-semibold text-blue-700">
+                        <span className="font-semibold text-blue-700 dark:text-blue-400">
                           {snap.summary.total_applications} trabajos ({snap.summary.total_finales || 0} finales)
                         </span>
                         <span>•</span>
-                        <span className="font-semibold text-slate-700">
+                        <span className="font-semibold text-slate-700 dark:text-slate-300">
                           {snap.summary.total_users} usuarios
                         </span>
                       </div>
@@ -950,7 +954,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                         type="button"
                         onClick={() => setSelectedSnapshotToRestore(snap)}
                         disabled={processing}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-200 dark:border-emerald-800 rounded-xl transition cursor-pointer"
                         title="Restaurar toda la información de este punto"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
@@ -960,7 +964,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                       <a
                         href={`/api/admin/backup/download/${snap.id}`}
                         download={snap.filename}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl transition cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl transition cursor-pointer"
                         title="Descargar este archivo JSON"
                       >
                         <Download className="w-3.5 h-3.5" />
@@ -974,13 +978,13 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
           </div>
 
           {/* Secondary helper: Cargar Datos de Prueba */}
-          <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-5 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-blue-600" />
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 Cargar Datos de Prueba para Demostración
               </span>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Puebla la plataforma con proyectos de ejemplo variados para verificar filtros y criterios de evaluación.
               </p>
             </div>
@@ -988,7 +992,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
               type="button"
               disabled={processing}
               onClick={handleSeedTestData}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-blue-700 bg-white hover:bg-blue-50 border border-blue-200 rounded-xl transition cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-blue-700 dark:text-blue-300 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 border border-blue-200 dark:border-slate-700 rounded-xl transition cursor-pointer shrink-0"
             >
               <Database className="w-3.5 h-3.5" />
               <span>Sembrar datos de prueba</span>
@@ -1000,14 +1004,14 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       {/* Confirmation Modal for Clearing Test Data */}
       {confirmClearOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+            <div className="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>
 
             <div className="text-center">
-              <h4 className="text-lg font-black text-slate-900">¿Confirmar limpieza de datos de prueba?</h4>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+              <h4 className="text-lg font-black text-slate-900 dark:text-white">¿Confirmar limpieza de datos de prueba?</h4>
+              <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                 Esta acción eliminará las aplicaciones y calificaciones de prueba. Se conservarán las categorías iniciales y tu usuario Administrador.
               </p>
             </div>
@@ -1016,7 +1020,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
               <button
                 type="button"
                 onClick={() => setConfirmClearOpen(false)}
-                className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition cursor-pointer"
               >
                 Cancelar
               </button>
@@ -1036,62 +1040,62 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       {/* Modal 1: Confirmation for Clean All Data (Eliminar Toda la Información) */}
       {confirmCleanAllOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn overflow-y-auto">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-rose-100 space-y-4 my-8">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-rose-100 dark:border-rose-900/40 space-y-4 my-8">
             <div className="flex items-center justify-center">
-              <div className="w-16 h-16 rounded-3xl bg-rose-100 text-rose-600 flex items-center justify-center relative shadow-sm">
+              <div className="w-16 h-16 rounded-3xl bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center relative shadow-sm">
                 <Trash2 className="w-8 h-8" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-xs font-black ring-2 ring-white">
+                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-xs font-black ring-2 ring-white dark:ring-slate-900">
                   !
                 </span>
               </div>
             </div>
 
             <div className="text-center space-y-1">
-              <h4 className="text-xl font-black text-slate-900">
+              <h4 className="text-xl font-black text-slate-900 dark:text-white">
                 ¿Eliminar toda la información existente?
               </h4>
-              <p className="text-xs text-slate-600 leading-relaxed max-w-md mx-auto">
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed max-w-md mx-auto">
                 Esta acción vaciará el catálogo para iniciar un nuevo ciclo lectivo. Se eliminarán de forma permanente todas las aplicaciones subidas, calificaciones y cuentas de alumnos.
               </p>
             </div>
 
             {/* ADVERTENCIA PRINCIPAL Y PREGUNTA DE BACKUP */}
-            <div className="p-4 bg-amber-50 rounded-2xl border-2 border-amber-300 space-y-3">
+            <div className="p-4 bg-amber-50 dark:bg-amber-950/40 rounded-2xl border-2 border-amber-300 dark:border-amber-700/60 space-y-3">
               <div className="flex items-start gap-2.5">
-                <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h5 className="text-xs font-black text-amber-950 uppercase tracking-wide">
+                  <h5 className="text-xs font-black text-amber-950 dark:text-amber-200 uppercase tracking-wide">
                     Advertencia y Pregunta de Seguridad
                   </h5>
-                  <p className="text-xs text-amber-950 leading-relaxed font-bold">
+                  <p className="text-xs text-amber-950 dark:text-amber-200 leading-relaxed font-bold">
                     ¿Has realizado un backup de toda la información antes de eliminar o limpiar todo?
                   </p>
-                  <p className="text-[11px] text-amber-900 leading-relaxed">
+                  <p className="text-[11px] text-amber-900 dark:text-amber-300 leading-relaxed">
                     Si continúas sin haber realizado un backup, todos los trabajos prácticos desarrollados por los estudiantes y sus notas se perderán y no podrás recuperarlos.
                   </p>
                 </div>
               </div>
 
               {/* Estado del último backup registrado en el servidor */}
-              <div className="p-2.5 bg-white/90 rounded-xl border border-amber-200 text-[11px] text-slate-700 flex items-center gap-2">
-                <HardDrive className="w-4 h-4 text-slate-500 shrink-0" />
+              <div className="p-2.5 bg-white/90 dark:bg-slate-800/90 rounded-xl border border-amber-200 dark:border-amber-800/50 text-[11px] text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                <HardDrive className="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0" />
                 <div className="truncate">
                   {snapshots.length > 0 ? (
                     <span>
                       Último backup en servidor:{' '}
-                      <strong className="text-slate-900">
+                      <strong className="text-slate-900 dark:text-white">
                         {new Date(snapshots[0].timestamp).toLocaleDateString('es-AR')}{' '}
                         {new Date(snapshots[0].timestamp).toLocaleTimeString('es-AR', {
                           hour: '2-digit',
                           minute: '2-digit',
                         })}
                       </strong>{' '}
-                      <span className="text-slate-500">
+                      <span className="text-slate-500 dark:text-slate-400">
                         ({snapshots[0].summary.total_applications} trab., {snapshots[0].summary.total_users} alum.)
                       </span>
                     </span>
                   ) : (
-                    <span className="text-amber-800 font-semibold">
+                    <span className="text-amber-800 dark:text-amber-300 font-semibold">
                       Aún no has generado ninguna copia de seguridad en esta sesión.
                     </span>
                   )}
@@ -1100,8 +1104,8 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
 
               {/* Botón rápido para hacer backup en el acto antes de eliminar */}
               {modalBackupDownloaded ? (
-                <div className="flex items-center gap-2 p-2.5 bg-emerald-100 text-emerald-900 rounded-xl text-xs font-bold border border-emerald-300 animate-fadeIn">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                <div className="flex items-center gap-2 p-2.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 rounded-xl text-xs font-bold border border-emerald-300 dark:border-emerald-800 animate-fadeIn">
+                  <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <span>¡Copia de seguridad (.json) descargada exitosamente justo ahora!</span>
                 </div>
               ) : (
@@ -1109,36 +1113,36 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   type="button"
                   disabled={processing}
                   onClick={handleDownloadBackupFromCleanModal}
-                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 text-xs font-bold text-blue-900 bg-blue-100 hover:bg-blue-200 border border-blue-300 rounded-xl transition cursor-pointer shadow-xs"
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 text-xs font-bold text-blue-900 dark:text-blue-200 bg-blue-100 dark:bg-blue-900/40 hover:bg-blue-200 dark:hover:bg-blue-900/60 border border-blue-300 dark:border-blue-700 rounded-xl transition cursor-pointer shadow-xs"
                 >
-                  <Download className="w-4 h-4 text-blue-700" />
+                  <Download className="w-4 h-4 text-blue-700 dark:text-blue-300" />
                   <span>Descargar Backup ahora antes de eliminar (Recomendado)</span>
                 </button>
               )}
             </div>
 
             {/* Garantía de Seguridad Institucional */}
-            <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 text-[11px] text-slate-600 space-y-1">
-              <span className="font-bold text-slate-800 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
+            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+              <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                 Garantías de seguridad de la plataforma:
               </span>
-              <ul className="list-disc pl-5 space-y-0.5 text-slate-600">
+              <ul className="list-disc pl-5 space-y-0.5 text-slate-600 dark:text-slate-400">
                 <li>Tu usuario Administrador y las categorías Don Bosco se conservarán intactas.</li>
                 <li>El sistema creará un punto de resguardo previo automático en el servidor.</li>
               </ul>
             </div>
 
             {/* Checkbox de confirmación expresa de haber realizado backup */}
-            <label className="flex items-start gap-3 p-3.5 bg-rose-50/70 border border-rose-200 rounded-2xl cursor-pointer hover:bg-rose-50 transition select-none">
+            <label className="flex items-start gap-3 p-3.5 bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-2xl cursor-pointer hover:bg-rose-50 dark:hover:bg-rose-950/40 transition select-none">
               <input
                 type="checkbox"
                 checked={hasBackedUpChecked}
                 onChange={(e) => setHasBackedUpChecked(e.target.checked)}
-                className="mt-0.5 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500 cursor-pointer"
+                className="mt-0.5 w-4 h-4 text-rose-600 rounded border-slate-300 dark:border-slate-600 focus:ring-rose-500 cursor-pointer"
               />
-              <span className="text-xs text-slate-800 leading-snug">
-                <strong className="text-rose-950 block font-bold mb-0.5">
+              <span className="text-xs text-slate-800 dark:text-slate-200 leading-snug">
+                <strong className="text-rose-950 dark:text-rose-200 block font-bold mb-0.5">
                   Confirmo que ya realicé el backup de la información (o asumo la eliminación).
                 </strong>
                 He verificado el resguardo de los trabajos de mis alumnos y deseo limpiar la base de datos por completo.
@@ -1146,11 +1150,11 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             </label>
 
             {/* Botones del modal */}
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => setConfirmCleanAllOpen(false)}
-                className="px-4 py-2.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer"
+                className="px-4 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition cursor-pointer"
               >
                 Cancelar
               </button>
@@ -1161,7 +1165,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                 className={`inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl transition shadow-xs ${
                   hasBackedUpChecked && !processing
                     ? 'text-white bg-rose-600 hover:bg-rose-700 cursor-pointer'
-                    : 'text-slate-400 bg-slate-100 border border-slate-200 cursor-not-allowed opacity-60'
+                    : 'text-slate-400 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 cursor-not-allowed opacity-60'
                 }`}
                 title={
                   !hasBackedUpChecked
@@ -1180,60 +1184,60 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       {/* Modal 2: Preview & Confirm Restore from Uploaded JSON File */}
       {fileRestorePreview && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
-            <div className="w-14 h-14 rounded-3xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+            <div className="w-14 h-14 rounded-3xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mx-auto">
               <FileJson className="w-7 h-7" />
             </div>
 
             <div className="text-center space-y-1">
-              <h4 className="text-lg font-black text-slate-900">
+              <h4 className="text-lg font-black text-slate-900 dark:text-white">
                 Confirmar Restauración de Copia de Seguridad
               </h4>
-              <p className="text-xs text-slate-600">
-                Archivo analizado con éxito: <strong className="text-slate-800">{fileRestorePreview.filename}</strong>
+              <p className="text-xs text-slate-600 dark:text-slate-300">
+                Archivo analizado con éxito: <strong className="text-slate-800 dark:text-white">{fileRestorePreview.filename}</strong>
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-2.5 p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs">
-              <div className="p-2.5 bg-white rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-500 block">Trabajos a restaurar</span>
-                <span className="font-bold text-slate-900 text-sm">
+            <div className="grid grid-cols-2 gap-2.5 p-3.5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs">
+              <div className="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Trabajos a restaurar</span>
+                <span className="font-bold text-slate-900 dark:text-white text-sm">
                   {fileRestorePreview.summary.total_applications}{' '}
-                  <span className="text-[10px] font-normal text-amber-700">
+                  <span className="text-[10px] font-normal text-amber-700 dark:text-amber-400">
                     ({fileRestorePreview.summary.total_finales} finales)
                   </span>
                 </span>
               </div>
-              <div className="p-2.5 bg-white rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-500 block">Alumnos a restaurar</span>
-                <span className="font-bold text-slate-900 text-sm">
+              <div className="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Alumnos a restaurar</span>
+                <span className="font-bold text-slate-900 dark:text-white text-sm">
                   {fileRestorePreview.summary.total_users}
                 </span>
               </div>
-              <div className="p-2.5 bg-white rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-500 block">Calificaciones</span>
-                <span className="font-bold text-slate-900 text-sm">
+              <div className="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Calificaciones</span>
+                <span className="font-bold text-slate-900 dark:text-white text-sm">
                   {fileRestorePreview.summary.total_ratings}
                 </span>
               </div>
-              <div className="p-2.5 bg-white rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-500 block">Categorías</span>
-                <span className="font-bold text-slate-900 text-sm">
+              <div className="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Categorías</span>
+                <span className="font-bold text-slate-900 dark:text-white text-sm">
                   {fileRestorePreview.summary.total_categories}
                 </span>
               </div>
             </div>
 
-            <p className="text-[11px] text-slate-500 leading-relaxed bg-blue-50 border border-blue-200/70 p-3 rounded-xl">
+            <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed bg-blue-50 dark:bg-blue-950/40 border border-blue-200/70 dark:border-blue-800/60 p-3 rounded-xl">
               Al confirmar, se sincronizarán todos los registros en Google Cloud Firestore y la base de datos local.
               Se resguardará una copia de seguridad previa de manera automática.
             </p>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => setFileRestorePreview(null)}
-                className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition cursor-pointer"
               >
                 Cancelar
               </button>
@@ -1253,37 +1257,37 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       {/* Modal 3: Confirm Restore from Server Snapshot */}
       {selectedSnapshotToRestore && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
-            <div className="w-14 h-14 rounded-3xl bg-blue-100 text-blue-700 flex items-center justify-center mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+            <div className="w-14 h-14 rounded-3xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 flex items-center justify-center mx-auto">
               <RotateCcw className="w-7 h-7" />
             </div>
 
             <div className="text-center space-y-1">
-              <h4 className="text-lg font-black text-slate-900">
+              <h4 className="text-lg font-black text-slate-900 dark:text-white">
                 ¿Restaurar punto guardado en el servidor?
               </h4>
-              <p className="text-xs text-slate-600">
-                Archivo: <strong className="text-slate-800">{selectedSnapshotToRestore.filename}</strong>
+              <p className="text-xs text-slate-600 dark:text-slate-300">
+                Archivo: <strong className="text-slate-800 dark:text-white">{selectedSnapshotToRestore.filename}</strong>
               </p>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Fecha del punto: {new Date(selectedSnapshotToRestore.timestamp).toLocaleString('es-AR')}
               </p>
             </div>
 
-            <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-1">
-              <span className="font-semibold text-slate-700 block">Contenido del punto:</span>
-              <div className="flex items-center gap-2 text-slate-600 text-[11px]">
+            <div className="p-3.5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+              <span className="font-semibold text-slate-700 dark:text-slate-200 block">Contenido del punto:</span>
+              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300 text-[11px]">
                 <span>• {selectedSnapshotToRestore.summary.total_applications} aplicaciones</span>
                 <span>• {selectedSnapshotToRestore.summary.total_users} usuarios</span>
                 <span>• {selectedSnapshotToRestore.summary.total_ratings} calificaciones</span>
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => setSelectedSnapshotToRestore(null)}
-                className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition cursor-pointer"
               >
                 Cancelar
               </button>

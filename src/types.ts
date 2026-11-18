@@ -18,6 +18,24 @@ export interface SpecificationFile {
   almacenamiento?: 'firebase_storage' | 'local';
 }
 
+export interface VideoExplicativo {
+  tipo: 'archivo' | 'enlace';
+  url: string;
+  nombre_archivo?: string;
+  tamano_bytes?: number;
+  tipo_mime?: string;
+  herramienta_avatar?: string;
+  titulo?: string;
+  descripcion?: string;
+  actualizado_por?: string;
+  fecha_subida: string;
+  almacenamiento?: 'firebase_storage' | 'local' | 'externo';
+}
+
+export interface PlatformSettings {
+  intro_video?: VideoExplicativo | null;
+}
+
 export interface Application {
   id: string;
   nombre: string;
@@ -35,7 +53,10 @@ export interface Application {
   promedio_calificacion: number;
   cantidad_votos: number;
   es_trabajo_final?: boolean;
+  es_ejercitacion_pipeline?: boolean; // Ejercitación Google AI Studio - GitHub - Vercel
+  repositorio_github?: string;
   especificacion?: SpecificationFile | null;
+  video_explicativo?: VideoExplicativo | null;
   comentarios?: Comment[];
   puede_ver_comentarios?: boolean;
   mi_calificacion?: {

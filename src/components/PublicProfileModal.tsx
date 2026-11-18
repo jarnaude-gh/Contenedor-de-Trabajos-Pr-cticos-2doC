@@ -45,19 +45,19 @@ export const PublicProfileModal: React.FC<PublicProfileModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
       <div
-        className="relative bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh]"
+        className="relative bg-white dark:bg-slate-900 rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div className="px-6 py-4 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <UserIcon className="w-4 h-4 text-blue-600" />
-            <h3 className="text-base font-bold text-slate-900">Perfil Público del Alumno</h3>
+            <UserIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Perfil Público del Alumno</h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-xl transition cursor-pointer"
+            className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-xl transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -66,7 +66,7 @@ export const PublicProfileModal: React.FC<PublicProfileModalProps> = ({
         {/* Content */}
         <div className="p-6 overflow-y-auto space-y-6">
           {loading ? (
-            <div className="py-12 text-center text-slate-500 text-xs">
+            <div className="py-12 text-center text-slate-500 dark:text-slate-400 text-xs">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent mb-2"></div>
               <p>Cargando perfil...</p>
             </div>
@@ -96,13 +96,13 @@ export const PublicProfileModal: React.FC<PublicProfileModalProps> = ({
 
               {/* Published Apps Section */}
               <div>
-                <h4 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-1.5">
-                  <FolderGit2 className="w-4 h-4 text-blue-600" />
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-1.5">
+                  <FolderGit2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   Trabajos Prácticos Publicados
                 </h4>
 
                 {profile.aplicaciones.length === 0 ? (
-                  <p className="text-xs text-slate-500 italic py-6 text-center bg-slate-50 rounded-2xl border border-slate-200">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 italic py-6 text-center bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700">
                     Este alumno aún no ha publicado ningún trabajo práctico.
                   </p>
                 ) : (

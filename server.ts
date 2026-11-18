@@ -15,9 +15,9 @@ async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
 
-  // Middleware for body parsing (support large uploads such as specification files up to 50MB)
-  app.use(express.json({ limit: '50mb' }));
-  app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+  // Middleware for body parsing (support large uploads such as specification files)
+  app.use(express.json({ limit: '60mb' }));
+  app.use(express.urlencoded({ extended: true, limit: '60mb' }));
 
   // Static uploads directory for logos and assets
   app.use('/uploads', express.static(path.resolve(__dirname, 'uploads')));

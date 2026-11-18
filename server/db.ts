@@ -56,6 +56,24 @@ export interface SpecificationFile {
   almacenamiento?: 'firebase_storage' | 'local';
 }
 
+export interface VideoExplicativo {
+  tipo: 'archivo' | 'enlace';
+  url: string;
+  nombre_archivo?: string;
+  tamano_bytes?: number;
+  tipo_mime?: string;
+  herramienta_avatar?: string;
+  titulo?: string;
+  descripcion?: string;
+  actualizado_por?: string;
+  fecha_subida: string;
+  almacenamiento?: 'firebase_storage' | 'local' | 'externo';
+}
+
+export interface PlatformSettings {
+  intro_video?: VideoExplicativo | null;
+}
+
 export interface Application {
   id: string;
   nombre: string;
@@ -66,7 +84,10 @@ export interface Application {
   categoria_id: string;
   herramienta: string;
   es_trabajo_final?: boolean;
+  es_ejercitacion_pipeline?: boolean; // Ejercitación Google AI Studio - GitHub - Vercel
+  repositorio_github?: string;
   especificacion?: SpecificationFile | null;
+  video_explicativo?: VideoExplicativo | null;
   fecha_publicacion: string;
   fecha_ultima_modificacion: string;
 }
@@ -86,6 +107,7 @@ export interface DatabaseSchema {
   categories: Category[];
   applications: Application[];
   ratings: Rating[];
+  settings?: PlatformSettings;
 }
 
 export interface BackupSnapshot {
@@ -160,6 +182,7 @@ class Database {
       categories: [],
       applications: [],
       ratings: [],
+      settings: { intro_video: null },
     };
   }
 
@@ -177,20 +200,27 @@ class Database {
   public async initFirestore(): Promise<void> {
     try {
       console.log('[Firestore] Conectando a Google Cloud Firestore...');
-      const [usersSnap, catsSnap, appsSnap, ratingsSnap] = await Promise.all([
+      const [usersSnap, catsSnap, appsSnap, ratingsSnap, settingsSnap] = await Promise.all([
         withRetry(() => getDocs(collection(firestore, 'users'))),
         withRetry(() => getDocs(collection(firestore, 'categories'))),
         withRetry(() => getDocs(collection(firestore, 'applications'))),
         withRetry(() => getDocs(collection(firestore, 'ratings'))),
+        withRetry(() => getDocs(collection(firestore, 'settings'))).catch(() => ({ docs: [] })),
       ]);
 
-      if (appsSnap.docs.length > 0 || usersSnap.docs.length > 0) {
+      const generalSettingsDoc = settingsSnap.docs.find((d) => d.id === 'general');
+      const cloudSettings: PlatformSettings = generalSettingsDoc
+        ? (generalSettingsDoc.data() as PlatformSettings)
+        : this.data.settings || { intro_video: null };
+
+      if (appsSnap.docs.length > 0 || usersSnap.docs.length > 0 || generalSettingsDoc) {
         // Cloud Firestore already has production data! Hydrate from Firestore.
         this.data = {
           users: usersSnap.docs.map((d) => d.data() as User),
           categories: catsSnap.docs.map((d) => d.data() as Category),
           applications: appsSnap.docs.map((d) => d.data() as Application),
           ratings: ratingsSnap.docs.map((d) => d.data() as Rating),
+          settings: cloudSettings,
         };
         console.log(
           `[Firestore] Datos cargados exitosamente de la nube: ${this.data.applications.length} aplicaciones, ${this.data.users.length} usuarios, ${this.data.ratings.length} calificaciones.`
@@ -223,6 +253,9 @@ class Database {
       }
       for (const rating of this.data.ratings) {
         promises.push(withRetry(() => setDoc(doc(firestore, 'ratings', rating.id), rating)));
+      }
+      if (this.data.settings) {
+        promises.push(withRetry(() => setDoc(doc(firestore, 'settings', 'general'), this.data.settings!)));
       }
 
       await Promise.all(promises);
@@ -644,6 +677,7 @@ class Database {
       categories: initialCats,
       applications: [],
       ratings: [],
+      settings: this.data.settings || { intro_video: null },
     };
 
     this.save();
@@ -666,6 +700,7 @@ class Database {
       total_categories: this.data.categories.length,
       total_ratings: this.data.ratings.length,
       total_finales: this.data.applications.filter((a) => a.es_trabajo_final).length,
+      total_pipeline: this.data.applications.filter((a) => a.es_ejercitacion_pipeline).length,
     };
 
     const snapshot: BackupSnapshot = {
@@ -838,6 +873,7 @@ class Database {
       categories: initialCats,
       applications: [],
       ratings: [],
+      settings: this.data.settings || { intro_video: null },
     };
 
     // 4. Guardar archivo local y sincronizar categorías y admin con Firestore
@@ -949,6 +985,7 @@ class Database {
       categories: restoredCategories,
       applications: restoredApps,
       ratings: restoredRatings,
+      settings: incomingData.settings || this.data.settings || { intro_video: null },
     };
 
     // 4. Guardar archivo local y sincronizar todos los registros con Firestore
@@ -1169,6 +1206,25 @@ class Database {
     );
 
     return rating;
+  }
+
+  // Platform Settings & Intro Video
+  public getSettings(): PlatformSettings {
+    return this.data.settings || { intro_video: null };
+  }
+
+  public updateIntroVideo(video: VideoExplicativo | null): PlatformSettings {
+    if (!this.data.settings) {
+      this.data.settings = {};
+    }
+    this.data.settings.intro_video = video;
+    this.save();
+
+    withRetry(() => setDoc(doc(firestore, 'settings', 'general'), this.data.settings!)).catch((err) =>
+      console.error('[Firestore] Error saving platform settings:', err)
+    );
+
+    return this.data.settings;
   }
 
   public getAppStats(appId: string): { promedio: number; votos: number } {
