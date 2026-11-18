@@ -112,6 +112,7 @@ export const IntroVideoModal: React.FC<IntroVideoModalProps> = ({
               nombre_archivo: currentVideo.nombre_archivo,
               tamano_bytes: currentVideo.tamano_bytes,
               tipo_mime: currentVideo.tipo_mime,
+              poster_url: currentVideo.poster_url,
               almacenamiento: currentVideo.almacenamiento,
             } as any),
           });
@@ -351,8 +352,8 @@ export const IntroVideoModal: React.FC<IntroVideoModalProps> = ({
                   className="w-full px-3.5 py-2 text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
                 />
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
-                  Compatible con enlaces de <strong>YouTube</strong>, <strong>HeyGen</strong>,{' '}
-                  <strong>Google Drive</strong>, <strong>Vimeo</strong>, <strong>Loom</strong> o URL directa de archivo <code>.mp4</code>.
+                  Compatible con enlaces de <strong>Synthesia</strong>, <strong>HeyGen</strong>,{' '}
+                  <strong>YouTube</strong>, <strong>Google Drive</strong>, <strong>Vimeo</strong>, <strong>Loom</strong> o URL directa de archivo <code>.mp4</code>.
                 </p>
               </div>
             )}

@@ -740,7 +740,7 @@ export const AppFormModal: React.FC<AppFormModalProps> = ({
                       </button>
                     </div>
                     <p className="text-[10px] text-slate-400 dark:text-slate-500">
-                      Compatible con YouTube, HeyGen, Google Drive, Vimeo, Loom o enlace directo MP4.
+                      Compatible con Synthesia, HeyGen, YouTube, Google Drive, Vimeo, Loom o enlace directo MP4.
                     </p>
                   </div>
                 )}

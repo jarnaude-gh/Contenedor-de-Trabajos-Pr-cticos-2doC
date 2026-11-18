@@ -67,12 +67,29 @@ export interface VideoExplicativo {
   descripcion?: string;
   actualizado_por?: string;
   fecha_subida: string;
+  poster_url?: string;
   almacenamiento?: 'firebase_storage' | 'local' | 'externo';
 }
 
 export interface PlatformSettings {
   intro_video?: VideoExplicativo | null;
 }
+
+export const DEFAULT_INTRO_VIDEO: VideoExplicativo = {
+  tipo: 'archivo',
+  url: '/videos/presentacion-vidriera-v2.mp4',
+  poster_url: '/videos/presentacion-vidriera-poster-v2.jpg',
+  nombre_archivo: 'PresentacionVidrieraDeTrabajos.mp4',
+  tamano_bytes: 3431552,
+  tipo_mime: 'video/mp4',
+  herramienta_avatar: 'Synthesia',
+  titulo: 'Presentación de la Vidriera de Trabajos Prácticos',
+  descripcion:
+    'Video explicativo oficial del curso Habilidades Digitales + IA sobre el funcionamiento de este contenedor de trabajos prácticos.',
+  actualizado_por: 'Profesor Don Bosco',
+  fecha_subida: '2026-11-18T13:37:37.000Z',
+  almacenamiento: 'local',
+};
 
 export interface Application {
   id: string;
@@ -182,7 +199,7 @@ class Database {
       categories: [],
       applications: [],
       ratings: [],
-      settings: { intro_video: null },
+      settings: { intro_video: { ...DEFAULT_INTRO_VIDEO } },
     };
   }
 
@@ -211,7 +228,16 @@ class Database {
       const generalSettingsDoc = settingsSnap.docs.find((d) => d.id === 'general');
       const cloudSettings: PlatformSettings = generalSettingsDoc
         ? (generalSettingsDoc.data() as PlatformSettings)
-        : this.data.settings || { intro_video: null };
+        : this.data.settings || { intro_video: { ...DEFAULT_INTRO_VIDEO } };
+
+      let shouldSyncDefaultIntro = false;
+      if (
+        !cloudSettings.intro_video ||
+        cloudSettings.intro_video.url === '/videos/presentacion-vidriera.mp4'
+      ) {
+        cloudSettings.intro_video = { ...DEFAULT_INTRO_VIDEO };
+        shouldSyncDefaultIntro = true;
+      }
 
       if (appsSnap.docs.length > 0 || usersSnap.docs.length > 0 || generalSettingsDoc) {
         // Cloud Firestore already has production data! Hydrate from Firestore.
@@ -226,6 +252,10 @@ class Database {
           `[Firestore] Datos cargados exitosamente de la nube: ${this.data.applications.length} aplicaciones, ${this.data.users.length} usuarios, ${this.data.ratings.length} calificaciones.`
         );
         this.save();
+        if (shouldSyncDefaultIntro) {
+          await withRetry(() => setDoc(doc(firestore, 'settings', 'general'), cloudSettings));
+          console.log('[Firestore] Video de presentación inicial instalado y sincronizado en settings/general.');
+        }
       } else {
         // Cloud Firestore is empty: push initial seed into Firestore
         console.log('[Firestore] Base de datos en la nube inicializada vacía. Sincronizando datos iniciales a Firestore...');
@@ -296,6 +326,18 @@ class Database {
         rol: 'ADMINISTRADOR',
         fecha_creacion: new Date('2026-03-01T08:00:00Z').toISOString(),
       });
+      changed = true;
+    }
+
+    if (
+      !this.data.settings ||
+      !this.data.settings.intro_video ||
+      this.data.settings.intro_video.url === '/videos/presentacion-vidriera.mp4'
+    ) {
+      this.data.settings = {
+        ...(this.data.settings || {}),
+        intro_video: { ...DEFAULT_INTRO_VIDEO },
+      };
       changed = true;
     }
 
@@ -677,7 +719,7 @@ class Database {
       categories: initialCats,
       applications: [],
       ratings: [],
-      settings: this.data.settings || { intro_video: null },
+      settings: this.data.settings?.intro_video ? this.data.settings : { intro_video: { ...DEFAULT_INTRO_VIDEO } },
     };
 
     this.save();
@@ -873,7 +915,7 @@ class Database {
       categories: initialCats,
       applications: [],
       ratings: [],
-      settings: this.data.settings || { intro_video: null },
+      settings: this.data.settings?.intro_video ? this.data.settings : { intro_video: { ...DEFAULT_INTRO_VIDEO } },
     };
 
     // 4. Guardar archivo local y sincronizar categorías y admin con Firestore
@@ -985,7 +1027,11 @@ class Database {
       categories: restoredCategories,
       applications: restoredApps,
       ratings: restoredRatings,
-      settings: incomingData.settings || this.data.settings || { intro_video: null },
+      settings: incomingData.settings?.intro_video
+        ? incomingData.settings
+        : this.data.settings?.intro_video
+        ? this.data.settings
+        : { intro_video: { ...DEFAULT_INTRO_VIDEO } },
     };
 
     // 4. Guardar archivo local y sincronizar todos los registros con Firestore
@@ -1210,7 +1256,10 @@ class Database {
 
   // Platform Settings & Intro Video
   public getSettings(): PlatformSettings {
-    return this.data.settings || { intro_video: null };
+    if (!this.data.settings?.intro_video) {
+      return { ...(this.data.settings || {}), intro_video: { ...DEFAULT_INTRO_VIDEO } };
+    }
+    return this.data.settings;
   }
 
   public updateIntroVideo(video: VideoExplicativo | null): PlatformSettings {

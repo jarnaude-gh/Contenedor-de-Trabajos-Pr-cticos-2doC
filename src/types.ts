@@ -29,6 +29,7 @@ export interface VideoExplicativo {
   descripcion?: string;
   actualizado_por?: string;
   fecha_subida: string;
+  poster_url?: string;
   almacenamiento?: 'firebase_storage' | 'local' | 'externo';
 }
 

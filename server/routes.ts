@@ -1593,7 +1593,7 @@ apiRouter.get('/settings/intro-video', (_req, res: Response) => {
 
 // Admin only: Set intro video via URL or pre-uploaded metadata
 apiRouter.post('/settings/intro-video', authenticate(true), requireAdmin, (req: AuthRequest, res: Response) => {
-  const { url, titulo, descripcion, herramienta_avatar, tipo, nombre_archivo, tamano_bytes, tipo_mime, almacenamiento } = req.body;
+  const { url, titulo, descripcion, herramienta_avatar, tipo, nombre_archivo, tamano_bytes, tipo_mime, poster_url, almacenamiento } = req.body;
 
   if (!url || !String(url).trim()) {
     res.status(400).json({ error: 'Debes indicar un enlace o subir un archivo de video válido.' });
@@ -1617,6 +1617,7 @@ apiRouter.post('/settings/intro-video', authenticate(true), requireAdmin, (req: 
     nombre_archivo: nombre_archivo ? String(nombre_archivo) : undefined,
     tamano_bytes: typeof tamano_bytes === 'number' ? tamano_bytes : undefined,
     tipo_mime: tipo_mime ? String(tipo_mime) : undefined,
+    poster_url: poster_url ? String(poster_url) : undefined,
     herramienta_avatar: herramienta_avatar ? String(herramienta_avatar).trim() : undefined,
     titulo: titulo ? String(titulo).trim() : '¿De qué se trata este Contenedor de Trabajos Prácticos?',
     descripcion: descripcion ? String(descripcion).trim() : '',

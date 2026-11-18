@@ -23,12 +23,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl mb-8 border border-blue-900/40">
       <div
-        className={`relative z-10 grid gap-6 items-center ${
+        className={`relative z-10 grid gap-6 lg:gap-8 items-center ${
           introVideo ? 'grid-cols-1 lg:grid-cols-12' : 'grid-cols-1'
         }`}
       >
         {/* Left Column: Title, Copy & CTAs */}
-        <div className={introVideo ? 'lg:col-span-7' : 'max-w-3xl'}>
+        <div className={introVideo ? 'lg:col-span-6' : 'max-w-3xl'}>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30 mb-4 backdrop-blur-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Escuela de Formación Profesional Don Bosco • Ciclo Lectivo 2026</span>
@@ -84,14 +84,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Right Column: Teacher's Dashboard Explanatory Video */}
         {introVideo && (
-          <div className="lg:col-span-5 bg-slate-900/80 backdrop-blur-md border border-indigo-400/30 rounded-2xl p-3.5 shadow-2xl space-y-2.5">
+          <div className="lg:col-span-6 bg-slate-900/85 backdrop-blur-md border border-indigo-400/35 rounded-2xl p-4 shadow-2xl space-y-3">
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-0.5">
                   <Video className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                   <span>Presentación Docente del Contenedor</span>
                 </div>
-                <h2 className="text-xs sm:text-sm font-bold text-white leading-snug line-clamp-2">
+                <h2 className="text-sm font-bold text-white leading-snug line-clamp-2">
                   {introVideo.titulo || '¿De qué se trata este Contenedor de Trabajos Prácticos?'}
                 </h2>
               </div>
@@ -115,7 +115,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </p>
             )}
 
-            <VideoPlayer video={introVideo} compact={true} className="border-slate-700/80" />
+            <VideoPlayer
+              key={introVideo.url}
+              video={introVideo}
+              className="border-slate-700/80 shadow-lg"
+            />
           </div>
         )}
       </div>

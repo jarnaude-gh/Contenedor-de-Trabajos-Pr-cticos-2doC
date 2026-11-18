@@ -21,13 +21,26 @@ function getEmbedInfo(video: VideoExplicativo): {
 
   const lower = url.toLowerCase();
 
-  // Direct video file extensions or Firebase Storage / local uploads
+  // Direct video file extensions or Firebase Storage / local uploads / bundled public videos
   if (
     /\.(mp4|webm|mov|m4v|ogv)(\?.*)?$/i.test(lower) ||
     lower.startsWith('/uploads/videos/') ||
+    lower.startsWith('/videos/') ||
     (lower.includes('firebasestorage.googleapis.com') && !lower.includes('youtube'))
   ) {
     return { kind: 'native', src: url };
+  }
+
+  // Synthesia
+  const synthesiaMatch = url.match(
+    /share\.synthesia\.io\/(?:embeds\/videos\/)?([a-f0-9-]{8,}|[a-zA-Z0-9_-]{8,})/i
+  );
+  if (synthesiaMatch && synthesiaMatch[1]) {
+    return {
+      kind: 'iframe',
+      src: `https://share.synthesia.io/embeds/videos/${synthesiaMatch[1]}`,
+      provider: 'Synthesia',
+    };
   }
 
   // YouTube
@@ -102,11 +115,12 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const info = getEmbedInfo(video);
 
   return (
-    <div className={`rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-950 ${className}`}>
+    <div className={`rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-950 ${compact ? 'shadow-md' : ''} ${className}`}>
       {info.kind === 'native' && (
-        <div className={`relative w-full bg-black ${compact ? 'aspect-video max-h-60' : 'aspect-video'}`}>
+        <div className="relative w-full bg-black aspect-video">
           <video
             src={info.src}
+            poster={video.poster_url}
             controls
             playsInline
             preload="metadata"
@@ -118,7 +132,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       )}
 
       {info.kind === 'iframe' && (
-        <div className={`relative w-full bg-black ${compact ? 'aspect-video max-h-60' : 'aspect-video'}`}>
+        <div className="relative w-full bg-black aspect-video">
           <iframe
             src={info.src}
             title={video.titulo || 'Video explicativo con IA'}
